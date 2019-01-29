@@ -1,18 +1,26 @@
 <template>
   <div>
-
     <b-navbar toggleable="md" type="dark" variant="info">
       <b-container>
         <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
         <b-navbar-brand href="/nlp/">
-          <b-img thumbnail width="30" height="30" src="/nlp/image/logo/logo.jpg" class="d-inline-block align-top" fluid alt="Responsive image" />
+          <b-img
+            thumbnail
+            width="30"
+            height="30"
+            src="/nlp/image/logo/logo.jpg"
+            class="d-inline-block align-top"
+            fluid
+            alt="Responsive image"
+          />
           <span>nlpaper.challenge</span>
         </b-navbar-brand>
 
         <b-collapse is-nav id="nav_collapse">
           <b-navbar-nav class="ml-auto">
-            <b-nav-item href="#" active>Members</b-nav-item>
-            <b-nav-item href="#">Slides</b-nav-item>
+            <b-nav-item href="#">Schedule</b-nav-item>
+            <b-nav-item href="#">Members</b-nav-item>
+            <b-nav-item href="#">Resources</b-nav-item>
           </b-navbar-nav>
         </b-collapse>
       </b-container>
@@ -33,7 +41,7 @@
       </template>
 
       <b-container>
-        <hr class="my-4" />
+        <hr class="my-4">
 
         <div class="text-center">
           <b-button class="main-button" href="#recruit" size="lg" variant="info">
@@ -48,35 +56,41 @@
       <b-row>
         <b-col cols="10" offset="1">
           <b-card-group deck>
-            <b-card title="Title"
-                    img-src="https://picsum.photos/300/300/?image=41"
-                    img-alt="Img"
-                    img-top>
-                <p class="card-text">
-                    This is a wider card with supporting text below as a
-                    natural lead-in to additional content. This content
-                    is a little bit longer.
-                </p>
+            <b-card
+              title="Schedule"
+              img-src="https://picsum.photos/300/300/?image=41"
+              img-alt="Img"
+              img-top
+            >
+              <p class="card-text">
+                This is a wider card with supporting text below as a
+                natural lead-in to additional content. This content
+                is a little bit longer.
+              </p>
             </b-card>
-            <b-card title="Title"
-                    img-src="https://picsum.photos/300/300/?image=41"
-                    img-alt="Img"
-                    img-top>
-                <p class="card-text">
-                    This is a wider card with supporting text below as a
-                    natural lead-in to additional content. This content
-                    is a little bit longer.
-                </p>
+            <b-card
+              title="Members"
+              img-src="https://picsum.photos/300/300/?image=41"
+              img-alt="Img"
+              img-top
+            >
+              <p class="card-text">
+                This is a wider card with supporting text below as a
+                natural lead-in to additional content. This content
+                is a little bit longer.
+              </p>
             </b-card>
-            <b-card title="Title"
-                    img-src="https://picsum.photos/300/300/?image=41"
-                    img-alt="Img"
-                    img-top>
-                <p class="card-text">
-                    This is a wider card with supporting text below as a
-                    natural lead-in to additional content. This content
-                    is a little bit longer.
-                </p>
+            <b-card
+              title="Resources"
+              img-src="https://picsum.photos/300/300/?image=41"
+              img-alt="Img"
+              img-top
+            >
+              <p class="card-text">
+                This is a wider card with supporting text below as a
+                natural lead-in to additional content. This content
+                is a little bit longer.
+              </p>
             </b-card>
           </b-card-group>
         </b-col>
@@ -121,6 +135,6 @@ export default {
 
 <style>
 .main-button {
-  border-radius: 25px
+  border-radius: 25px;
 }
 </style>
