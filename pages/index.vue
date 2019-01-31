@@ -54,12 +54,12 @@
 
     <b-container>
       <b-row>
-        <b-col cols="10" offset="1">
+        <b-col cols="12">
           <b-card-group deck>
             <b-card
               title="Schedule"
-              img-src="https://picsum.photos/300/300/?image=41"
-              img-alt="Img"
+              img-src="/nlp/image/card/schedule.jpg"
+              img-alt="schedule"
               img-top
             >
               <p class="card-text">
@@ -68,12 +68,7 @@
                 is a little bit longer.
               </p>
             </b-card>
-            <b-card
-              title="Members"
-              img-src="https://picsum.photos/300/300/?image=41"
-              img-alt="Img"
-              img-top
-            >
+            <b-card title="Members" img-src="/nlp/image/card/members.jpg" img-alt="members" img-top>
               <p class="card-text">
                 This is a wider card with supporting text below as a
                 natural lead-in to additional content. This content
@@ -82,8 +77,8 @@
             </b-card>
             <b-card
               title="Resources"
-              img-src="https://picsum.photos/300/300/?image=41"
-              img-alt="Img"
+              img-src="/nlp/image/card/resources.jpg"
+              img-alt="resources"
               img-top
             >
               <p class="card-text">
@@ -99,7 +94,7 @@
       <b-row></b-row>
 
       <b-row class="mt-5">
-        <b-col cols="10" offset="1">
+        <b-col cols="12">
           <h2>What's New</h2>
 
           <b-list-group class="mt-4">
@@ -122,15 +117,7 @@
 </template>
 
 <script>
-import Logo from "~/components/Logo.vue";
-
-export default {
-  components: {
-    Logo
-  },
-
-  mounted() {}
-};
+export default {};
 </script>
 
 <style>
