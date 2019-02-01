@@ -58,34 +58,33 @@
           <b-card-group deck>
             <b-card
               title="Schedule"
+              sub-title="nlpaper.challengeの全体流れ"
               img-src="/nlp/image/card/schedule.jpg"
               img-alt="schedule"
               img-top
+              class="with-shadow"
             >
-              <p class="card-text">
-                This is a wider card with supporting text below as a
-                natural lead-in to additional content. This content
-                is a little bit longer.
-              </p>
+              <nuxt-link to="/schedule" class="btn stretched-link"></nuxt-link>
             </b-card>
-            <b-card title="Members" img-src="/nlp/image/card/members.jpg" img-alt="members" img-top>
-              <p class="card-text">
-                This is a wider card with supporting text below as a
-                natural lead-in to additional content. This content
-                is a little bit longer.
-              </p>
+            <b-card
+              title="Members"
+              sub-title="nlpaper.challengeの参加者"
+              img-src="/nlp/image/card/members.jpg"
+              img-alt="members"
+              img-top
+              class="with-shadow"
+            >
+              <nuxt-link to="/members" class="btn stretched-link"></nuxt-link>
             </b-card>
             <b-card
               title="Resources"
+              sub-title="スライド、書籍など"
               img-src="/nlp/image/card/resources.jpg"
               img-alt="resources"
               img-top
+              class="with-shadow"
             >
-              <p class="card-text">
-                This is a wider card with supporting text below as a
-                natural lead-in to additional content. This content
-                is a little bit longer.
-              </p>
+              <nuxt-link to="/resources" class="btn stretched-link"></nuxt-link>
             </b-card>
           </b-card-group>
         </b-col>
@@ -123,5 +122,19 @@ export default {};
 <style>
 .main-button {
   border-radius: 25px;
+}
+.stretched-link::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: auto;
+  content: "";
+  background-color: rgba(0, 0, 0, 0);
+}
+.with-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 </style>
