@@ -91,4 +91,14 @@ html {
   min-height: 100vh;
   flex-direction: column;
 }
+.content {
+  display: flex;
+  min-height: 80vh;
+  flex-direction: column;
+}
+.footer {
+  min-height: 10vh;
+  background-color: #f5f5f5;
+  flex: 1;
+}
 </style>
