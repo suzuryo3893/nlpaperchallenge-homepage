@@ -64,8 +64,6 @@
         </b-col>
       </b-row>
 
-      <b-row></b-row>
-
       <b-row class="mt-5">
         <b-col cols="12">
           <h2>What's New</h2>
@@ -80,12 +78,6 @@
         </b-col>
       </b-row>
     </b-container>
-
-    <footer class="bd-footer">
-      <b-container>
-        <div class="text-center">Hello</div>
-      </b-container>
-    </footer>
   </div>
 </template>
 
@@ -96,22 +88,5 @@ export default {};
 <style>
 .main-button {
   border-radius: 25px;
-}
-.stretched-link::after {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
-  pointer-events: auto;
-  content: "";
-  background-color: rgba(0, 0, 0, 0);
-}
-.with-shadow {
-  box-shadow: 0 6px 20px rgba(180, 180, 180, 0.5);
-}
-.with-shadow:hover {
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 </style>

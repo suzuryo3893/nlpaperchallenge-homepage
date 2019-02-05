@@ -1,16 +1,21 @@
 <template>
-  <div>
+  <div class="site">
     <navbar/>
-    <nuxt/>
+    <main class="content">
+      <nuxt/>
+    </main>
+    <my-footer/>
   </div>
 </template>
 
 <script>
 import Navbar from "~/components/Navbar.vue";
+import MyFooter from "~/components/Footer.vue";
 
 export default {
   components: {
-    Navbar
+    Navbar,
+    MyFooter
   }
 };
 </script>
@@ -63,5 +68,27 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+.stretched-link::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: auto;
+  content: "";
+  background-color: rgba(0, 0, 0, 0);
+}
+.with-shadow {
+  box-shadow: 0 6px 20px rgba(180, 180, 180, 0.5);
+}
+.with-shadow:hover {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+.site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 </style>
