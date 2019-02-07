@@ -1,7 +1,7 @@
 <template>
   <footer class="footer mt-5">
     <div class="container">
-      <span class="text-muted">Place sticky footer content here.</span>
+      <h5 class="text-center mt-5">&copy;2019 nlpaper.challenge</h5>
     </div>
   </footer>
 </template>
