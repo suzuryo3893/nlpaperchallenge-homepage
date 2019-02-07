@@ -86,7 +86,8 @@ module.exports = {
   modules: [,
     // Doc: https://bootstrap-vue.js.org/docs/
     'bootstrap-vue/nuxt',
-    'nuxt-fontawesome'
+    'nuxt-fontawesome',
+    '@nuxtjs/axios'
   ],
 
   /*
@@ -107,10 +108,10 @@ module.exports = {
 
   fontawesome: {
     imports: [
-        {
-          set: '@fortawesome/free-solid-svg-icons',
-          icons: ['fas']
-        },
+      {
+        set: '@fortawesome/free-solid-svg-icons',
+        icons: ['fas']
+      },
     ],
   }
 }
