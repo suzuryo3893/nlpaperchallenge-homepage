@@ -17,24 +17,10 @@
     <b-container>
       <b-row v-for="([ member1, member2 ], idx) in memberPairs" :key="idx" class="mb-4">
         <b-col>
-          <b-card class="with-shadow">
-            <b-media>
-              <b-img slot="aside" :src="member1.image" width="100" height="100" alt="placeholder"/>
-              <h5 class="mt-0">{{ member1.name }}</h5>
-              <p>{{ member1.affiliation }}</p>
-              <a :href="member1.url" class="btn stretched-link"></a>
-            </b-media>
-          </b-card>
+          <member-card :member="member1" />
         </b-col>
         <b-col v-if="member2">
-          <b-card class="with-shadow">
-            <b-media>
-              <b-img slot="aside" :src="member2.image" width="100" height="100" alt="placeholder"/>
-              <h5 class="mt-0">{{ member2.name }}</h5>
-              <p>{{ member2.affiliation }}</p>
-              <a :href="member2.url" class="btn stretched-link"></a>
-            </b-media>
-          </b-card>
+          <member-card :member="member2" />
         </b-col>
         <b-col v-else></b-col>
       </b-row>
@@ -43,7 +29,12 @@
 </template>
 
 <script>
+import MemberCard from '~/components/MemberCard.vue';
+
 export default {
+  components: {
+    MemberCard
+  },
   data() {
     return {
       members: []
