@@ -18,7 +18,7 @@
         <hr class="my-4">
 
         <div class="text-center">
-          <b-button class="main-button" href="#recruit" size="lg" variant="info">
+          <b-button class="main-button" to="/members" size="lg" variant="info">
             <span>メンバー登録</span>
             <font-awesome-icon icon="angle-right"/>
           </b-button>

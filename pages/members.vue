@@ -9,7 +9,10 @@
 
       <template slot="lead">
         <b-container>
-          <div class="text-center">参加者。</div>
+          <div class="text-center">
+            ご参加になりたい方は
+            <a href="https://twitter.com/NlpaperChalleng" target="_blank">@NlpaperChalleng</a>へDMください。
+          </div>
         </b-container>
       </template>
     </b-jumbotron>
@@ -17,10 +20,10 @@
     <b-container>
       <b-row v-for="([ member1, member2 ], idx) in memberPairs" :key="idx" class="mb-4">
         <b-col>
-          <member-card :member="member1" />
+          <member-card :member="member1"/>
         </b-col>
         <b-col v-if="member2">
-          <member-card :member="member2" />
+          <member-card :member="member2"/>
         </b-col>
         <b-col v-else></b-col>
       </b-row>
@@ -29,7 +32,7 @@
 </template>
 
 <script>
-import MemberCard from '~/components/MemberCard.vue';
+import MemberCard from "~/components/MemberCard.vue";
 
 export default {
   components: {

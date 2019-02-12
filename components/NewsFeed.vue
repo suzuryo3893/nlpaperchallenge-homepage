@@ -2,7 +2,12 @@
   <div>
     <h2>What's New</h2>
     <b-list-group class="mt-4">
-      <b-list-group-item v-for="(event, idx) in latestEvents" :key="idx" :href="event.url">
+      <b-list-group-item
+        v-for="(event, idx) in latestEvents"
+        :key="idx"
+        :href="event.url"
+        target="_blank"
+      >
         <b-row>
           <b-col cols="2" class="text-right">{{ event.date }}</b-col>
           <b-col cols="10">{{ event.title }}</b-col>
