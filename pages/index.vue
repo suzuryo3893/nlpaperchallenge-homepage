@@ -66,15 +66,7 @@
 
       <b-row class="mt-5">
         <b-col cols="12">
-          <h2>What's New</h2>
-
-          <b-list-group class="mt-4">
-            <b-list-group-item>Cras justo odio</b-list-group-item>
-            <b-list-group-item>Dapibus ac facilisis in</b-list-group-item>
-            <b-list-group-item>Morbi leo risus</b-list-group-item>
-            <b-list-group-item>Porta ac consectetur ac</b-list-group-item>
-            <b-list-group-item>Vestibulum at eros</b-list-group-item>
-          </b-list-group>
+          <news-feed :events="events"/>
         </b-col>
       </b-row>
     </b-container>
@@ -82,7 +74,22 @@
 </template>
 
 <script>
-export default {};
+import NewsFeed from "~/components/NewsFeed.vue";
+export default {
+  components: {
+    NewsFeed
+  },
+  data() {
+    return {
+      events: []
+    };
+  },
+  mounted() {
+    this.$axios.$get("/nlp/data/events.json").then(res => {
+      this.events = res;
+    });
+  }
+};
 </script>
 
 <style>
