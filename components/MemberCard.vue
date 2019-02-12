@@ -1,7 +1,23 @@
 <template>
   <b-card class="with-shadow">
     <b-media>
-      <b-img slot="aside" :src="member.image" width="100" height="100" alt="placeholder"/>
+      <b-img
+        v-if="member.image"
+        slot="aside"
+        :src="member.image"
+        width="100"
+        height="100"
+        alt="placeholder"
+      />
+      <b-img
+        v-else
+        slot="aside"
+        blank
+        blank-color="#777"
+        width="100"
+        height="100"
+        alt="placeholder"
+      />
       <h5 class="mt-0">{{ member.name }}</h5>
       <p>{{ member.affiliation }}</p>
       <a :href="member.url" target="_blank" class="btn stretched-link"></a>
@@ -14,5 +30,5 @@ export default {
   props: {
     member: Object
   }
-}
+};
 </script>
