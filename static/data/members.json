@@ -7,6 +7,20 @@
     "date": "2019-01-01"
   },
   {
+    "name": "片岡 裕雄",
+    "affiliation": "産業技術総合研究所",
+    "url": "http://hirokatsukataoka.net/",
+    "image": "http://hirokatsukataoka.net/image/hirokatsu_min.png",
+    "date": "2019-01-01"
+  },
+  {
+    "name": "吉田 光太",
+    "affiliation": "東京電機大学",
+    "url": "https://twitter.com/kota_ysd",
+    "image": "http://xpaperchallenge.org/cv/image/member/yoshida.jpg",
+    "date": "2019-01-01"
+  },
+  {
     "name": "ファイサル ハディプトラ",
     "affiliation": "電通国際情報サービス",
     "url": "https://twitter.com/faisal_putra",
@@ -14,10 +28,59 @@
     "date": "2019-01-01"
   },
   {
-    "name": "片岡 裕雄",
+    "name": "横井 祥",
     "affiliation": "産業技術総合研究所",
-    "url": "http://hirokatsukataoka.net/",
-    "image": "http://hirokatsukataoka.net/image/hirokatsu_min.png",
+    "url": "http://www.cl.ecei.tohoku.ac.jp/~yokoi/",
+    "image": "http://www.cl.ecei.tohoku.ac.jp/~yokoi/img/melbourne_3.png",
+    "date": "2019-01-01"
+  },
+  {
+    "name": "美濃口 宗尊",
+    "affiliation": "東京電機大学",
+    "url": "https://twitter.com/cv2mametch",
+    "image": "http://xpaperchallenge.org/cv/image/member/minoguchi.jpg",
+    "date": "2019-01-01"
+  },
+  {
+    "name": "久保 隆宏",
+    "affiliation": "TIS株式会社",
+    "url": "https://twitter.com/icoxfog417",
+    "image": "https://pbs.twimg.com/profile_images/831753975028449280/5NbY1iyN_400x400.jpg",
+    "date": "2019-01-01"
+  },
+  {
+    "name": "福原 吉博",
+    "affiliation": "早稲田大学",
+    "url": "https://twitter.com/gatheluck",
+    "image": "http://xpaperchallenge.org/cv/image/member/hukuhara.jpg",
+    "date": "2019-01-01"
+  },
+  {
+    "name": "山本 晋太郎",
+    "affiliation": "早稲田大学",
+    "url": "https://twitter.com/yshin55",
+    "image": "http://xpaperchallenge.org/cv/image/member/yamamoto.jpg",
+    "date": "2019-01-01"
+  },
+  {
+    "name": "平松 淳",
+    "affiliation": "筑波大学",
+    "url": "https://twitter.com/0xhimako",
+    "image": "https://pbs.twimg.com/profile_images/911806378749997056/D18Jp-zH_400x400.jpg",
+    "date": "2019-01-01"
+  },
+  {
+    "name": "井之上 直也",
+    "affiliation": "産業技術総合研究所",
+    "url": "http://www.cl.ecei.tohoku.ac.jp/~naoya-i/",
+    "image": "http://www.cl.ecei.tohoku.ac.jp/~naoya-i/resources/profile_20171126.jpg",
+    "date": "2019-01-01"
+  },
+  {
+    "name": "井之上 直也",
+    "affiliation": "産業技術総合研究所",
+    "url": "http://www.cl.ecei.tohoku.ac.jp/~naoya-i/",
+    "image": "http://www.cl.ecei.tohoku.ac.jp/~naoya-i/resources/profile_20171126.jpg",
     "date": "2019-01-01"
   }
 ]
