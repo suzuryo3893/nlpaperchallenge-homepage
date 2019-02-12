@@ -2,12 +2,12 @@
   <b-navbar toggleable="md" type="dark" variant="info">
     <b-container>
       <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
-      <b-navbar-brand href="/nlp/">
+      <b-navbar-brand to="/">
         <b-img
           thumbnail
           width="30"
           height="30"
-          src="/nlp/image/logo/logo.jpg"
+          :src="require('~/static/image/logo/logo.jpg')"
           class="d-inline-block align-top"
           fluid
           alt="Responsive image"

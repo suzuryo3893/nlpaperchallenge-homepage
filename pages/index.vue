@@ -28,12 +28,12 @@
 
     <b-container>
       <b-row>
-        <b-col cols="12">
+        <b-col>
           <b-card-group deck>
             <b-card
               title="Schedule"
               sub-title="nlpaper.challengeの全体流れ"
-              img-src="/nlp/image/card/schedule.jpg"
+              :img-src="require('~/static/image/card/schedule.jpg')"
               img-alt="schedule"
               img-top
               class="with-shadow"
@@ -43,7 +43,7 @@
             <b-card
               title="Members"
               sub-title="nlpaper.challengeの参加者"
-              img-src="/nlp/image/card/members.jpg"
+              :img-src="require('~/static/image/card/members.jpg')"
               img-alt="members"
               img-top
               class="with-shadow"
@@ -53,7 +53,7 @@
             <b-card
               title="Resources"
               sub-title="スライド、書籍など"
-              img-src="/nlp/image/card/resources.jpg"
+              :img-src="require('~/static/image/card/resources.jpg')"
               img-alt="resources"
               img-top
               class="with-shadow"

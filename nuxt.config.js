@@ -64,7 +64,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
-
+    'timeline-vuejs/dist/timeline-vuejs.css'
   ],
 
   script: [
@@ -78,6 +78,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+
   ],
 
   /*
