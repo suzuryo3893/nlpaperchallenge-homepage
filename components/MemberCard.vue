@@ -12,8 +12,7 @@
       <b-img
         v-else
         slot="aside"
-        blank
-        blank-color="#777"
+        :src="require('~/static/image/avatar/members.jpg')"
         width="100"
         height="100"
         alt="placeholder"
