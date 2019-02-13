@@ -118,5 +118,9 @@ module.exports = {
         icons: ['fab']
       }
     ]
+  },
+
+  axios: {
+    baseURL: process.env.API_HOST || 'http://localhost/api'
   }
 }
