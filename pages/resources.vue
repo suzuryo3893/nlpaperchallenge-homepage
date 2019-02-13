@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-jumbotron>
+    <b-jumbotron header-level="4">
       <template slot="header">
         <b-container>
           <div class="text-center">Resources</div>

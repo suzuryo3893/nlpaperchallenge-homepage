@@ -9,8 +9,8 @@
         target="_blank"
       >
         <b-row>
-          <b-col cols="2" class="text-right">{{ event.date }}</b-col>
-          <b-col cols="10">{{ event.title }}</b-col>
+          <b-col cols="4" md="2" class="text-right">{{ event.date }}</b-col>
+          <b-col>{{ event.title }}</b-col>
         </b-row>
       </b-list-group-item>
     </b-list-group>

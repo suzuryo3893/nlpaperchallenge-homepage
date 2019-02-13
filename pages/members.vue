@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-jumbotron>
+    <b-jumbotron header-level="4">
       <template slot="header">
         <b-container>
           <div class="text-center">Members</div>
@@ -19,13 +19,12 @@
 
     <b-container>
       <b-row v-for="([ member1, member2 ], idx) in memberPairs" :key="idx" class="mb-4">
-        <b-col>
+        <b-col class="mb-4" cols="12" md="6">
           <member-card :member="member1"/>
         </b-col>
         <b-col v-if="member2">
           <member-card :member="member2"/>
         </b-col>
-        <b-col v-else></b-col>
       </b-row>
     </b-container>
   </div>

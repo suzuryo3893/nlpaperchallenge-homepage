@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-jumbotron>
+    <b-jumbotron header-level="4">
       <template slot="header">
         <b-container>
           <div class="text-center">Schedule</div>
@@ -15,8 +15,8 @@
     </b-jumbotron>
     <div class="container">
       <b-row>
-        <b-col cols="8" offset="2">
-          <b-table bordered :items="items" :fields="fields"></b-table>
+        <b-col lg="8" offset-lg="2">
+          <b-table stacked='md' bordered :items="items" :fields="fields"></b-table>
         </b-col>
       </b-row>
     </div>
@@ -33,32 +33,32 @@ export default {
   data() {
     return {
       fields: [
-        { key: "time", label: "日程", class: "text-center" },
+        { key: "time", label: "日程" },
         { key: "title", label: "予定" }
       ],
       items: [
         {
-          time: "2019年1月 ～ 2019年2月",
+          time: "2019/01 ～ 2019/02",
           title: 'NLP/CV交流勉強会',
         },
         {
-          time: "2019年3月 ～ 2019年4月",
+          time: "2019/03 ～ 2019/04",
           title: 'NLP x CV先端勉強会',
         },
         {
-          time: "2019年5月 ～ 2019年8月",
+          time: "2019/05 ～ 2019/08",
           title: 'ACL完全読破チャレンジ',
         },
         {
-          time: "2019年8月",
+          time: "2019/08",
           title: 'YANS(言語処理若手の会-シンポジウム-)に乗り込む',
         },
         {
-          time: "2019年9月",
+          time: "2019/09",
           title: 'CVPAPER/NLPAPER CHALLENGE読破報告会',
         },
         {
-          time: "2020年2月",
+          time: "2020/02",
           title: 'ACL2020へ投稿 !',
         }
       ]

@@ -15,17 +15,18 @@
         <span>nlpaper.challenge</span>
       </b-navbar-brand>
 
-      <b-collapse is-nav id="nav_collapse" class="mr-4">
+      <b-collapse is-nav id="nav_collapse">
         <b-navbar-nav class="ml-auto">
           <b-nav-item to="/schedule" :active="isActive('/schedule')">Schedule</b-nav-item>
           <b-nav-item to="/members" :active="isActive('/members')">Members</b-nav-item>
-          <b-nav-item to="/resources" :active="isActive('/resources')">Resources</b-nav-item>
+          <b-nav-item to="/resources" :active="isActive('/resources')" class="mr-4">Resources</b-nav-item>
+          <b-button href="http://xpaperchallenge.org/cv/" variant="primary main-button" target="_blank">
+            <span>cvaper.challenge</span>
+            <font-awesome-icon icon="external-link-alt"/>
+          </b-button>
         </b-navbar-nav>
       </b-collapse>
-      <b-button href="http://xpaperchallenge.org/cv/" variant="primary main-button" target="_blank">
-        <span>cvaper.challenge</span>
-        <font-awesome-icon icon="external-link-alt"/>
-      </b-button>
+
     </b-container>
   </b-navbar>
 </template>
