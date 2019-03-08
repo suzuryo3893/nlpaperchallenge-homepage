@@ -43,7 +43,7 @@ module.exports = {
       },
       {
         property: 'og:image',
-        content: 'http://xpaperchallenge.org/nlp/images/logo.jpg'
+        content: 'http://xpaperchallenge.org/nlp/image/logo/logo.jpg'
       },
       {
         property: 'og:url',
@@ -51,7 +51,7 @@ module.exports = {
       }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: 'favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/nlp/favicon.ico' }
     ]
   },
 

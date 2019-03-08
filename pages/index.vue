@@ -3,7 +3,12 @@
     <b-jumbotron header-level="4">
       <template slot="header">
         <b-container>
-          <div class="text-center">nlpaper challenge</div>
+          <div class="text-center">
+            <b-img
+              fluid
+              :src="require('~/static/image/logo/title.svg')"
+              width="400" />
+          </div>
         </b-container>
       </template>
 

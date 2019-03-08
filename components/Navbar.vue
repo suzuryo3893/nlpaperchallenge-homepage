@@ -5,14 +5,13 @@
       <b-navbar-brand to="/">
         <b-img
           thumbnail
-          width="30"
-          height="30"
-          :src="require('~/static/image/logo/logo.jpg')"
+          height="50"
+          width="250"
+          :src="require('~/static/image/logo/brand.svg')"
           class="d-inline-block align-top"
           fluid
-          alt="Responsive image"
+          alt="Brand"
         />
-        <span>nlpaper.challenge</span>
       </b-navbar-brand>
 
       <b-collapse is-nav id="nav_collapse">
@@ -21,7 +20,7 @@
           <b-nav-item to="/members" :active="isActive('/members')">Members</b-nav-item>
           <b-nav-item to="/resources" :active="isActive('/resources')" class="mr-4">Resources</b-nav-item>
           <b-button href="http://xpaperchallenge.org/cv/" variant="primary main-button" target="_blank">
-            <span>cvaper.challenge</span>
+            <span>cvpaper.challenge</span>
             <font-awesome-icon icon="external-link-alt"/>
           </b-button>
         </b-navbar-nav>
