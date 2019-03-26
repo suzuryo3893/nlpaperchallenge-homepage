@@ -9,7 +9,11 @@
         target="_blank"
       >
         <b-row>
-          <b-col cols="4" md="2" class="text-right">{{ event.date }}</b-col>
+          <b-col
+            cols="4"
+            md="2"
+            class="text-right"
+          >{{ new Date(event.date).toLocaleDateString('ja-JP') }}</b-col>
           <b-col>{{ event.title }}</b-col>
         </b-row>
       </b-list-group-item>
