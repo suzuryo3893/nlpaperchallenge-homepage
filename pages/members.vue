@@ -61,9 +61,13 @@ export default {
     }
   },
   mounted() {
-    this.$axios.$get("/nlp/data/members.json").then(res => {
-      this.members = res;
-    });
+    this.$axios
+      .$get(
+        "https://script.google.com/macros/s/AKfycbyAM3WEpk_cqU9SfZ9tFSs3yw-Y1ls-RyXeMPzqoCWcAuRADbu1/exec?entity=members"
+      )
+      .then(res => {
+        this.members = res;
+      });
   }
 };
 </script>

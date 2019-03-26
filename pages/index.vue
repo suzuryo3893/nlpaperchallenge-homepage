@@ -4,10 +4,7 @@
       <template slot="header">
         <b-container>
           <div class="text-center">
-            <b-img
-              fluid
-              :src="require('~/static/image/logo/title.svg')"
-              width="400" />
+            <b-img fluid :src="require('~/static/image/logo/title.svg')" width="400"/>
           </div>
         </b-container>
       </template>
@@ -90,9 +87,13 @@ export default {
     };
   },
   mounted() {
-    this.$axios.$get("/nlp/data/events.json").then(res => {
-      this.events = res;
-    });
+    this.$axios
+      .$get(
+        "https://script.google.com/macros/s/AKfycbyAM3WEpk_cqU9SfZ9tFSs3yw-Y1ls-RyXeMPzqoCWcAuRADbu1/exec?entity=events"
+      )
+      .then(res => {
+        this.events = res;
+      });
   }
 };
 </script>
