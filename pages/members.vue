@@ -17,7 +17,7 @@
       </template>
     </b-jumbotron>
 
-    <b-container>
+    <b-container v-if="!isLoading">
       <b-row v-for="([ member1, member2 ], idx) in memberPairs" :key="idx" class="mb-4">
         <b-col class="mb-4" cols="12" md="6">
           <member-card :member="member1"/>
@@ -27,6 +27,9 @@
         </b-col>
       </b-row>
     </b-container>
+    <p v-else class="text-center">
+      <font-awesome-icon class="mr-5" :icon="['fas', 'spinner']" pulse size="2x"/>
+    </p>
   </div>
 </template>
 
@@ -39,7 +42,8 @@ export default {
   },
   data() {
     return {
-      members: []
+      members: [],
+      isLoading: false
     };
   },
   computed: {
@@ -61,12 +65,18 @@ export default {
     }
   },
   mounted() {
+    this.isLoading = true;
     this.$axios
       .$get(
         "https://script.google.com/macros/s/AKfycbyAM3WEpk_cqU9SfZ9tFSs3yw-Y1ls-RyXeMPzqoCWcAuRADbu1/exec?entity=members"
       )
       .then(res => {
+        this.isLoading = false;
         this.members = res;
+      })
+      .catch(err => {
+        this.isLoading = false;
+        console.log(err);
       });
   }
 };

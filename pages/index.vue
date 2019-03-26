@@ -68,7 +68,7 @@
 
       <b-row class="mt-5">
         <b-col cols="12">
-          <news-feed :events="events"/>
+          <news-feed :events="events" :isLoading="isLoading"/>
         </b-col>
       </b-row>
     </b-container>
@@ -83,16 +83,23 @@ export default {
   },
   data() {
     return {
-      events: []
+      events: [],
+      isLoading: false
     };
   },
   mounted() {
+    this.isLoading = true;
     this.$axios
       .$get(
         "https://script.google.com/macros/s/AKfycbyAM3WEpk_cqU9SfZ9tFSs3yw-Y1ls-RyXeMPzqoCWcAuRADbu1/exec?entity=events"
       )
       .then(res => {
+        this.isLoading = false;
         this.events = res;
+      })
+      .catch(err => {
+        this.isLoading = false;
+        console.log(err);
       });
   }
 };

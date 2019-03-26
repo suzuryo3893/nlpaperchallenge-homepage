@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>What's New</h2>
-    <b-list-group class="mt-4">
+    <b-list-group v-if="!isLoading" class="mt-4">
       <b-list-group-item
         v-for="(event, idx) in latestEvents"
         :key="idx"
@@ -18,13 +18,17 @@
         </b-row>
       </b-list-group-item>
     </b-list-group>
+    <p v-else class="text-center">
+      <font-awesome-icon class="mr-5" :icon="['fas', 'spinner']" pulse size="2x"/>
+    </p>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    events: Array
+    events: Array,
+    isLoading: Boolean
   },
 
   computed: {
