@@ -83,19 +83,12 @@ export default {
   components: {
     NewsFeed
   },
-  asyncData({ params }) {
-    return axios.get(
-      "https://script.google.com/macros/s/AKfycbyAM3WEpk_cqU9SfZ9tFSs3yw-Y1ls-RyXeMPzqoCWcAuRADbu1/exec?entity=events"
-    )
-    .then((res) => {
-      return {
-        events : res.data,
-        isLoading: false
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    })
+  asyncData() {
+    let events = require('~/static/data/events.json').content;
+    return {
+      events,
+      isLoading: false
+    }
   }
 };
 </script>

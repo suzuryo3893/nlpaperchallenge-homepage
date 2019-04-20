@@ -34,22 +34,11 @@ export default {
     ResourceCard
   },
   asyncData() {
-    return axios
-      .get(
-        "https://script.google.com/macros/s/AKfycbyAM3WEpk_cqU9SfZ9tFSs3yw-Y1ls-RyXeMPzqoCWcAuRADbu1/exec?entity=resources"
-      )
-      .then(res => {
-        return {
-          isLoading: false,
-          resources: res.data
-        }
-      })
-      .catch(err => {
-        return {
-          isLoading: false,
-          resources: err
-        }
-      });
+    let resources = require('~/static/data/resources.json').content;
+    return {
+      resources,
+      isLoading: false
+    }
   }
 };
 </script>

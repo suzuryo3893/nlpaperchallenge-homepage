@@ -42,23 +42,11 @@ export default {
     MemberCard
   },
   asyncData() {
-    return axios
-      .get(
-        "https://script.google.com/macros/s/AKfycbyAM3WEpk_cqU9SfZ9tFSs3yw-Y1ls-RyXeMPzqoCWcAuRADbu1/exec?entity=members"
-      )
-      .then(res => {
-        return {
-          isLoading: false,
-          members: res.data
-        }
-      })
-      .catch(err => {
-        console.log(err);
-        return {
-          isLoading: false,
-          error: err
-        }
-      });
+    let members = require('~/static/data/members.json').content;
+    return {
+      members,
+      isLoading: false
+    }
   },
   computed: {
     memberPairs() {

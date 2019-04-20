@@ -1,8 +1,8 @@
 const pkg = require('./package')
-
+const axios = require('axios')
 
 module.exports = {
-  mode: 'spa',
+  mode: 'universal',
 
   /*
   ** Headers of the page
@@ -88,7 +88,8 @@ module.exports = {
     // Doc: https://bootstrap-vue.js.org/docs/
     'bootstrap-vue/nuxt',
     'nuxt-fontawesome',
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '~/modules/fetchData'
   ],
 
   /*
