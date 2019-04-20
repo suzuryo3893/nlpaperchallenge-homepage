@@ -35,6 +35,7 @@
 
 <script>
 import MemberCard from "~/components/MemberCard.vue";
+import axios from "axios";
 
 export default {
   components: {
@@ -66,13 +67,13 @@ export default {
   },
   mounted() {
     this.isLoading = true;
-    this.$axios
-      .$get(
+    axios
+      .get(
         "https://script.google.com/macros/s/AKfycbyAM3WEpk_cqU9SfZ9tFSs3yw-Y1ls-RyXeMPzqoCWcAuRADbu1/exec?entity=members"
       )
       .then(res => {
         this.isLoading = false;
-        this.members = res;
+        this.members = res.data;
       })
       .catch(err => {
         this.isLoading = false;

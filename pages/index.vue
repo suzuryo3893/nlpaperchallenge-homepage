@@ -77,6 +77,8 @@
 
 <script>
 import NewsFeed from "~/components/NewsFeed.vue";
+import axios from "axios";
+
 export default {
   components: {
     NewsFeed
@@ -89,13 +91,13 @@ export default {
   },
   mounted() {
     this.isLoading = true;
-    this.$axios
-      .$get(
+    axios
+      .get(
         "https://script.google.com/macros/s/AKfycbyAM3WEpk_cqU9SfZ9tFSs3yw-Y1ls-RyXeMPzqoCWcAuRADbu1/exec?entity=events"
       )
       .then(res => {
         this.isLoading = false;
-        this.events = res;
+        this.events = res.data;
       })
       .catch(err => {
         this.isLoading = false;
