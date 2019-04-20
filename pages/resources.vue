@@ -33,25 +33,22 @@ export default {
   components: {
     ResourceCard
   },
-  data() {
-    return {
-      resources: [],
-      isLoading: false
-    };
-  },
-  mounted() {
-    this.isLoading = true;
-    axios
+  asyncData() {
+    return axios
       .get(
         "https://script.google.com/macros/s/AKfycbyAM3WEpk_cqU9SfZ9tFSs3yw-Y1ls-RyXeMPzqoCWcAuRADbu1/exec?entity=resources"
       )
       .then(res => {
-        this.isLoading = false;
-        this.resources = res.data;
+        return {
+          isLoading: false,
+          resources: res.data
+        }
       })
       .catch(err => {
-        this.isLoading = false;
-        console.log(err);
+        return {
+          isLoading: false,
+          resources: err
+        }
       });
   }
 };

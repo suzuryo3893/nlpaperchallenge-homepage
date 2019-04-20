@@ -83,26 +83,19 @@ export default {
   components: {
     NewsFeed
   },
-  data() {
-    return {
-      events: [],
-      isLoading: false
-    };
-  },
-  mounted() {
-    this.isLoading = true;
-    axios
-      .get(
-        "https://script.google.com/macros/s/AKfycbyAM3WEpk_cqU9SfZ9tFSs3yw-Y1ls-RyXeMPzqoCWcAuRADbu1/exec?entity=events"
-      )
-      .then(res => {
-        this.isLoading = false;
-        this.events = res.data;
-      })
-      .catch(err => {
-        this.isLoading = false;
-        console.log(err);
-      });
+  asyncData({ params }) {
+    return axios.get(
+      "https://script.google.com/macros/s/AKfycbyAM3WEpk_cqU9SfZ9tFSs3yw-Y1ls-RyXeMPzqoCWcAuRADbu1/exec?entity=events"
+    )
+    .then((res) => {
+      return {
+        events : res.data,
+        isLoading: false
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    })
   }
 };
 </script>
