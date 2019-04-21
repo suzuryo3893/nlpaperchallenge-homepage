@@ -22,9 +22,9 @@ jobs:
           name: generate-app
           command: npm run generate
       - persist_to_workspace:
-        root: ./dist
-        paths:
-          - ./*
+          root: ./dist
+          paths:
+            - ./*
   deploy:
     machine:
       enabled: true
