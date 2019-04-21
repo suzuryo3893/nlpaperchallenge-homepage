@@ -21,6 +21,10 @@ jobs:
       - run:
           name: generate-app
           command: npm run generate
+      - persist_to_workspace:
+        root: ./dist
+        paths:
+          - ./*
   deploy:
     machine:
       enabled: true
@@ -32,6 +36,8 @@ jobs:
       - run:
           name: install-sshpass
           command: 'sudo apt-get install sshpass'
+      - attach_workspace:
+          at: ./dist
       - run:
           name: remove-previous-deployed
           command: ssh ${SSH_USER}@${SSH_HOST} rm -rf /home/xpaperchallenge/www/nlp/*
