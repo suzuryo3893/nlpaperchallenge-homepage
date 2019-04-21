@@ -85,3 +85,4 @@ sw.*
 
 # Prefetched static data
 static/data
+static/image/summaries
