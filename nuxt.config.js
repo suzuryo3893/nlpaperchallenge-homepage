@@ -1,8 +1,8 @@
 const pkg = require('./package')
-
+const axios = require('axios')
 
 module.exports = {
-  mode: 'spa',
+  mode: 'universal',
 
   /*
   ** Headers of the page
@@ -88,7 +88,8 @@ module.exports = {
     // Doc: https://bootstrap-vue.js.org/docs/
     'bootstrap-vue/nuxt',
     'nuxt-fontawesome',
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '~/modules/fetchData'
   ],
 
   /*
@@ -122,5 +123,27 @@ module.exports = {
 
   axios: {
     baseURL: process.env.API_HOST || 'http://localhost/api'
+  },
+
+  generate: {
+    routes: function() {
+      const tags = require('./static/data/summaries/tags.json').content;
+      const allSummaries = require('./static/data/summaries/all.json').content;
+      const perPage = 5;
+      const numPage = Math.ceil(allSummaries.length / perPage);
+
+      let routes = [];
+      for (let tag of tags) {
+        routes.push(`/summaries/tag/${tag}`);
+      }
+      for (let i=1; i <= allSummaries.length; i++) {
+        routes.push(`/summaries/${i}`);
+      }
+      for (let page=1; page <= numPage; page++) {
+        routes.push(`/summaries/page/${page}`);
+      }
+
+      return routes;
+    }
   }
 }

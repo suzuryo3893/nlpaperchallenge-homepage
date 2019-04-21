@@ -83,26 +83,12 @@ export default {
   components: {
     NewsFeed
   },
-  data() {
+  asyncData() {
+    let events = require('~/static/data/events.json').content;
     return {
-      events: [],
+      events,
       isLoading: false
-    };
-  },
-  mounted() {
-    this.isLoading = true;
-    axios
-      .get(
-        "https://script.google.com/macros/s/AKfycbyAM3WEpk_cqU9SfZ9tFSs3yw-Y1ls-RyXeMPzqoCWcAuRADbu1/exec?entity=events"
-      )
-      .then(res => {
-        this.isLoading = false;
-        this.events = res.data;
-      })
-      .catch(err => {
-        this.isLoading = false;
-        console.log(err);
-      });
+    }
   }
 };
 </script>

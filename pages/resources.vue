@@ -33,26 +33,12 @@ export default {
   components: {
     ResourceCard
   },
-  data() {
+  asyncData() {
+    let resources = require('~/static/data/resources.json').content;
     return {
-      resources: [],
+      resources,
       isLoading: false
-    };
-  },
-  mounted() {
-    this.isLoading = true;
-    axios
-      .get(
-        "https://script.google.com/macros/s/AKfycbyAM3WEpk_cqU9SfZ9tFSs3yw-Y1ls-RyXeMPzqoCWcAuRADbu1/exec?entity=resources"
-      )
-      .then(res => {
-        this.isLoading = false;
-        this.resources = res.data;
-      })
-      .catch(err => {
-        this.isLoading = false;
-        console.log(err);
-      });
+    }
   }
 };
 </script>

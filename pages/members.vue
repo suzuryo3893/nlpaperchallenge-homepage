@@ -41,11 +41,12 @@ export default {
   components: {
     MemberCard
   },
-  data() {
+  asyncData() {
+    let members = require('~/static/data/members.json').content;
     return {
-      members: [],
+      members,
       isLoading: false
-    };
+    }
   },
   computed: {
     memberPairs() {
@@ -64,21 +65,6 @@ export default {
         }
       }, []);
     }
-  },
-  mounted() {
-    this.isLoading = true;
-    axios
-      .get(
-        "https://script.google.com/macros/s/AKfycbyAM3WEpk_cqU9SfZ9tFSs3yw-Y1ls-RyXeMPzqoCWcAuRADbu1/exec?entity=members"
-      )
-      .then(res => {
-        this.isLoading = false;
-        this.members = res.data;
-      })
-      .catch(err => {
-        this.isLoading = false;
-        console.log(err);
-      });
   }
 };
 </script>
