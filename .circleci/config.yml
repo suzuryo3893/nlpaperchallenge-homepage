@@ -31,10 +31,10 @@ jobs:
           command: 'sudo apt-get install sshpass'
       - run:
           name: remove-previous-deployed
-          command: sshpass -p ${SSH_PASS} ssh xpaperchallenge@xpaperchallenge.org rm -rf /home/xpaperchallenge/www/nlp/*
+          command: sshpass -p ${SSH_PASS} ssh -o PasswordAuthentication=yes -o PubkeyAuthentication=no -o PreferredAuthentications=password ${SSH_USER}@${SSH_HOST} rm -rf /home/xpaperchallenge/www/nlp/*
       - run:
           name: copy-app-to-remote
-          command: sshpass -p ${SSH_PASS} scp -r ./dist/* xpaperchallenge@xpaperchallenge.org:/home/xpaperchallenge/www/nlp
+          command: sshpass -p ${SSH_PASS} scp -r ./dist/* ${SSH_USER}@${SSH_HOST}:/home/xpaperchallenge/www/nlp
 workflows:
   version: 2
   build-and-deploy: # deploy only from master branch
