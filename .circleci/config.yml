@@ -28,7 +28,7 @@ jobs:
     steps:
       - run:
           name: install-sshpass
-          command: apt-get install sshpass
+          command: 'sudo apt-get install sshpass'
       - run:
           name: remove-previous-deployed
           command: sshpass -p '$SSH_PASS' ssh $SSH_USER@$SSH_HOST rm -rf /home/xpaperchallenge/www/nlp/*
