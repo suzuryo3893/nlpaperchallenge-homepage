@@ -92,6 +92,7 @@ export default {
     let { content: summary, meta: { totalCount } } = require(`~/static/data/summaries/id/${id}.json`);
     return {
       summary,
+      totalCount,
       isLoading: false
     }
   },
