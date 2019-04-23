@@ -35,17 +35,16 @@
         </div>
         <div class="article-entry">
           <b-row>
-            <b-col cols="7">
+            <b-col xs="12" md="7">
               <h3 class="section-header"><b>概要</b></h3>
               <div class="section-content">{{ summary.overview }}</div>
             </b-col>
-            <b-col class="text-center">
+            <b-col xs="12" md="5" class="text-center">
               <b-img
+                fluid
                 class="section-image"
                 slot="aside"
                 :src="summary.image"
-                width="300"
-                height="200"
                 alt="placeholder"
               />
             </b-col>
@@ -117,7 +116,7 @@ export default {
   margin-bottom: 20px;
 }
 .article-header {
-  margin: 45px 45px 0;
+  margin: 2.8em 2.8em 0;
   border-bottom: 1px solid #ddd;
 }
 .article-title {
@@ -144,7 +143,7 @@ export default {
   margin-top: 20px;
   margin-bottom: 20px;
   color: #555;
-  padding: 0 45px;
+  padding: 0 2.8em;
 }
 .section-header {
   margin: 20px 0 10px 0;
@@ -157,7 +156,7 @@ export default {
   line-height: 1.6em;
   border-top: 1px solid #ddd;
   padding-top: 1.6em;
-  margin: 0 45px 45px;
+  margin: 0 3em 3em;
 }
 .article-footer a {
   color: #999;
