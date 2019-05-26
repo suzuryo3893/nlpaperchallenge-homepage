@@ -1,11 +1,13 @@
 const fs = require('fs-extra')
 const axios = require('axios')
 
+const GOOGLE_APP_SCRIPT_URL = 'ttps://script.google.com/macros/s/AKfycbxmGjl76YSWUtMBrapRFat2KI_qdG3r31Zq6h_H4rNbSPUEA-zh/exec'
+
 const urls = [
-  'https://script.google.com/macros/s/AKfycbyAM3WEpk_cqU9SfZ9tFSs3yw-Y1ls-RyXeMPzqoCWcAuRADbu1/exec?entity=events',
-  'https://script.google.com/macros/s/AKfycbyAM3WEpk_cqU9SfZ9tFSs3yw-Y1ls-RyXeMPzqoCWcAuRADbu1/exec?entity=members',
-  'https://script.google.com/macros/s/AKfycbyAM3WEpk_cqU9SfZ9tFSs3yw-Y1ls-RyXeMPzqoCWcAuRADbu1/exec?entity=resources',
-  'https://script.google.com/macros/s/AKfycbyAM3WEpk_cqU9SfZ9tFSs3yw-Y1ls-RyXeMPzqoCWcAuRADbu1/exec?entity=summaries'
+  `${GOOGLE_APP_SCRIPT_URL}?entity=events`,
+  `${GOOGLE_APP_SCRIPT_URL}?entity=members`,
+  `${GOOGLE_APP_SCRIPT_URL}?entity=resources`,
+  `${GOOGLE_APP_SCRIPT_URL}?entity=summaries`
 ]
 
 
@@ -54,11 +56,13 @@ module.exports = function fetchData() {
         // download all image and save to static data
         fs.emptyDir(`static/image/summaries`)
         for (let summary of allSummaries.data) {
-          const [ meta, base64encodedData ] = summary['image'].split(',')
-          const extension = meta.split(';')[0].substring(11)
-          const path = `static/image/summaries/${summary.id}.${extension}`
-          fetcher.push(writeImage(path, base64encodedData))
-          summary["image"] = `/nlp/image/summaries/${summary.id}.${extension}`
+          if(summary['image']) {
+            const [ meta, base64encodedData ] = summary['image'].split(',')
+            const extension = meta.split(';')[0].substring(11)
+            const path = `static/image/summaries/${summary.id}.${extension}`
+            fetcher.push(writeImage(path, base64encodedData))
+            summary["image"] = `/nlp/image/summaries/${summary.id}.${extension}`
+          }
         }
 
         // Create list data of all summary data
@@ -85,6 +89,7 @@ module.exports = function fetchData() {
 
         fetcher.push(writeData('static/data/summaries/tags.json', { content: Array.from(tagset) }));
 
+        console.log(tagset)
         for (let tag of tagset) {
           let summariesByTag = allSummaries.data.filter(summary => summary.tags.includes(tag));
           let tagDataPath = `static/data/summaries/tag/${tag}/list.json`;

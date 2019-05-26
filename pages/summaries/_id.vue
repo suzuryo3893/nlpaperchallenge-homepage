@@ -12,12 +12,12 @@
       <div class="article-inner">
         <div class="article-header">
           <b-row>
-            <b-col>
+            <b-col :sm=12 :md=6>
               <div class="article-id">
                 #{{ summary.id }}
               </div>
             </b-col>
-            <b-col>
+            <b-col :sm=12 :md=6>
               <div class="article-resumer">
                 summarized by : {{ summary.resumer }}
               </div>
@@ -35,12 +35,13 @@
         </div>
         <div class="article-entry">
           <b-row>
-            <b-col xs="12" md="7">
+            <b-col sm="12" md="7">
               <h3 class="section-header"><b>概要</b></h3>
               <div class="section-content">{{ summary.overview }}</div>
             </b-col>
-            <b-col xs="12" md="5" class="text-center">
+            <b-col sm="12" md="5" class="text-center">
               <b-img
+                v-if="summary.image"
                 fluid
                 class="section-image"
                 slot="aside"
@@ -50,9 +51,13 @@
             </b-col>
           </b-row>
           <h3 class="section-header">
-            <b>新規性・結果・なぜ通ったか？</b>
+            <b>新規性</b>
           </h3>
           <div class="section-content">{{ summary.details }}</div>
+          <h3 class="section-header">
+            <b>結果</b>
+          </h3>
+          <div class="section-content">{{ summary.results }}</div>
         </div>
         <div class="article-footer">
           <ul class="article-tag-list">
