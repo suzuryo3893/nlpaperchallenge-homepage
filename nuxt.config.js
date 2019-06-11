@@ -105,7 +105,7 @@ module.exports = {
   },
 
   router: {
-    base: '/nlp/'
+    base: '/cv/survey/'
   },
 
   fontawesome: {
@@ -141,6 +141,21 @@ module.exports = {
       }
       for (let page=1; page <= numPage; page++) {
         routes.push(`/summaries/page/${page}`);
+      }
+
+      const cvpr2019_tags = require('./static/data/cvpr2019_summaries/tags.json').content;
+      const cvpr2019_allSummaries = require('./static/data/cvpr2019_summaries/all.json').content;
+      const cvpr2019_perPage = 5;
+      const cvpr2019_numPage = Math.ceil(cvpr2019_allSummaries.length / cvpr2019_perPage);
+
+      for (let tag of cvpr2019_tags) {
+        routes.push(`/cvpr2019_summaries/tag/${tag}`);
+      }
+      for (let i=1; i <= cvpr2019_allSummaries.length; i++) {
+        routes.push(`/cvpr2019_summaries/${i}`);
+      }
+      for (let page=1; page <= cvpr2019_numPage; page++) {
+        routes.push(`/cvpr2019_summaries/page/${page}`);
       }
 
       return routes;
