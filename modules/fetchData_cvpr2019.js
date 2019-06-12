@@ -42,10 +42,10 @@ module.exports = function fetchData() {
         const fetcher = []
 
         // Fetch list of events, members, and resources from API
-        const allEvents = await axios.get(urls[0])
-        const allMembers = await axios.get(urls[1])
-        const allResources = await axios.get(urls[2])
-        const allSummaries = await axios.get(urls[3])
+        //const allEvents = await axios.get(urls[0])
+        //const allMembers = await axios.get(urls[1])
+        //const allResources = await axios.get(urls[2])
+        const allSummaries = await axios.get(urls[0])
 
         //fetcher.push(writeData('static/data/events.json', { content: allEvents.data }))
         //fetcher.push(writeData('static/data/members.json', { content: allMembers.data }))
@@ -103,7 +103,7 @@ module.exports = function fetchData() {
           fetcher.push(writeData(summaryPath, { content: summary, meta: { totalCount: allSummaries.data.length } }));
         }
 
-        console.log(`PROCESSING events, members, resources, and summaries...`)
+        console.log(`PROCESSING summaries...`)
 
         return Promise.all(fetcher)
             .then(() => {

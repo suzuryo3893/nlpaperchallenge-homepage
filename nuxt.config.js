@@ -89,7 +89,8 @@ module.exports = {
     'bootstrap-vue/nuxt',
     'nuxt-fontawesome',
     '@nuxtjs/axios',
-    '~/modules/fetchData'
+    '~/modules/fetchData',
+    '~/modules/fetchData_cvpr2019'
   ],
 
   /*
@@ -127,12 +128,14 @@ module.exports = {
 
   generate: {
     routes: function() {
+      let routes = [];
+      
+      //
       const tags = require('./static/data/summaries/tags.json').content;
       const allSummaries = require('./static/data/summaries/all.json').content;
       const perPage = 5;
       const numPage = Math.ceil(allSummaries.length / perPage);
 
-      let routes = [];
       for (let tag of tags) {
         routes.push(`/summaries/tag/${tag}`);
       }
@@ -143,6 +146,7 @@ module.exports = {
         routes.push(`/summaries/page/${page}`);
       }
 
+      //
       const cvpr2019_tags = require('./static/data/cvpr2019_summaries/tags.json').content;
       const cvpr2019_allSummaries = require('./static/data/cvpr2019_summaries/all.json').content;
       const cvpr2019_perPage = 5;
