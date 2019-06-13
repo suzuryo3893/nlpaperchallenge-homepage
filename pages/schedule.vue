@@ -23,6 +23,7 @@
   </div>
 </template>
 
+<!--
 <script>
 import Timeline from 'timeline-vuejs';
 
@@ -66,6 +67,7 @@ export default {
   }
 }
 </script>
+-->
 
 <style>
 </style>

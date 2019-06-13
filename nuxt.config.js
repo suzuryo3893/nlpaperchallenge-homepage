@@ -64,7 +64,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    'timeline-vuejs/dist/timeline-vuejs.css'
+    //'timeline-vuejs/dist/timeline-vuejs.css'
   ],
 
   script: [
