@@ -53,7 +53,7 @@ workflows:
           filters:
             branches:
               only:
-                - cvpaperchallenge_master
+                - master
           requires:
             - build
   nightly: # build and deploy at 12:00am
@@ -68,5 +68,5 @@ workflows:
           filters:
             branches:
               only:
-                - cvpaperchallenge_master
+                - master
 
