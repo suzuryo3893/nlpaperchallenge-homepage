@@ -7,18 +7,19 @@
           thumbnail
           height="50"
           width="250"
-          :src="require('~/static/image/logo/brand.svg')"
+          src="http://xpaperchallenge.org/cv/image/logo/cc_logo_2.png"
           class="d-inline-block align-top"
           fluid
           alt="Brand"
         />
+        <!-- :src="require('~/static/image/logo/brand.svg')" -->
       </b-navbar-brand>
 
       <b-collapse is-nav id="nav_collapse">
         <b-navbar-nav class="ml-auto">
-          <b-nav-item to="/schedule" :active="isActive('/schedule')">Schedule</b-nav-item>
-          <b-nav-item to="/members" :active="isActive('/members')">Members</b-nav-item>
-          <b-nav-item to="/resources" :active="isActive('/resources')" class="mr-4">Resources</b-nav-item>
+          <!--<b-nav-item to="/schedule" :active="isActive('/schedule')">Schedule</b-nav-item> -->
+          <!-- <b-nav-item to="/members" :active="isActive('/members')">Members</b-nav-item> -->
+          <!-- <b-nav-item to="/resources" :active="isActive('/resources')" class="mr-4">Resources</b-nav-item> -->
           <b-button href="http://xpaperchallenge.org/cv/" variant="primary main-button" target="_blank">
             <span>cvpaper.challenge</span>
             <font-awesome-icon icon="external-link-alt"/>
