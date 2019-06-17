@@ -8,21 +8,21 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'nlpaper.challenge - 自然言語処理の国際会議「ACL」の完全読破 !',
+    title: 'cvpaper.challenge - コンピュータビジョン分野の今を映し、創り出す挑戦',
     meta: [
       { charset: 'utf-8' },
       {
         name: 'keywords',
         content:
-          'nlpaper.challenge, cvpaper.challenge, nlp, natural language processing, paper, challenge, computer vision'
+          'cvpaper.challenge, cv, computer vision, paper, challenge'
       },
       {
         name: 'description',
-        content: '自然言語処理の国際会議「ACL」の完全読破を目指すnlpaper.challenge公式ホームページです。 自然言語処理の発展のため、勉強会や交流会を企画していきます。'
+        content: 'コンピュータビジョン分野の今を映し、創り出す挑戦を行うコミュニティcvpaper.challenge公式ホームページです。'
       },
       {
         name: 'author',
-        content: 'nlpaper.challenge'
+        content: 'cvpaper.challenge'
       },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
@@ -31,27 +31,27 @@ module.exports = {
       },
       {
         property: 'og:site_name',
-        content: 'nlpaper.challenge'
+        content: 'cvpaper.challenge'
       },
       {
         property: 'og:title',
-        content: 'nlpaper.challenge - 自然言語処理の国際会議「ACL」の完全読破 !'
+        content: 'cvpaper.challenge - コンピュータビジョン分野の今を映し、創り出す挑戦'
       },
       {
         property: 'og:description',
-        content: '自然言語処理の国際会議「ACL」の完全読破を目指すnlpaper.challenge公式ホームページです。 自然言語処理の発展のため、勉強会や交流会を企画していきます。'
+        content: 'コンピュータビジョン分野の今を映し、創り出す挑戦を行うコミュニティcvpaper.challenge公式ホームページです。'
       },
       {
         property: 'og:image',
-        content: 'http://xpaperchallenge.org/nlp/image/logo/logo.jpg'
+        content: 'http://xpaperchallenge.org/cv/image/logo/cc_logo_1_crop.png'
       },
       {
         property: 'og:url',
-        content: 'http://xpaperchallenge.org/nlp'
+        content: 'http://xpaperchallenge.org/cv'
       }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/nlp/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/cv/survey/favicon.ico' }
     ]
   },
 
