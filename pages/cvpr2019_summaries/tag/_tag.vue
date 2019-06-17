@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import SummaryCard from "~/components/SummaryCard.vue";
+import SummaryCard from "~/components/SummaryCard_cvpr2019.vue";
 import axios from "axios";
 
 export default {

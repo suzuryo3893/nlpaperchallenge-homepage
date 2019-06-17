@@ -47,6 +47,7 @@ module.exports = function fetchData_cvpr2019() {
         //const allMembers = await axios.get(urls[1])
         //const allResources = await axios.get(urls[2])
         const allSummaries = await axios.get(urls[0])
+        .catch((e)=>{console.error(e);throw e;});
 
         //fetcher.push(writeData('static/data/events.json', { content: allEvents.data }))
         //fetcher.push(writeData('static/data/members.json', { content: allMembers.data }))
@@ -55,12 +56,16 @@ module.exports = function fetchData_cvpr2019() {
         // download all image and save to static data
         fs.emptyDir(`static/image/cvpr2019_summaries`)
         for (let summary of allSummaries.data) {
-          if(summary['image']) {
-            const [ meta, base64encodedData ] = summary['image'].split(',')
-            const extension = meta.split(';')[0].substring(11)
-            const path = `static/image/cvpr2019_summaries/${summary.id}.${extension}`
-            fetcher.push(writeImage(path, base64encodedData))
-            summary["image"] = `/cv/survey/image/cvpr2019_summaries/${summary.id}.${extension}`
+          //if(summary['image']) {
+          //  const [ meta, base64encodedData ] = summary['image'].split(',')
+          //  const extension = meta.split(';')[0].substring(11)
+          //  const path = `static/image/cvpr2019_summaries/${summary.id}.${extension}`
+          //  fetcher.push(writeImage(path, base64encodedData))
+          //  summary["image"] = `/cv/survey/image/cvpr2019_summaries/${summary.id}.${extension}`
+          //}
+          if(summary['images']) {
+            summary['image'] = 'https://drive.google.com/uc?export=view&id='+summary['images'][0];
+            delete summary.images; //とりあえず
           }
         }
 
