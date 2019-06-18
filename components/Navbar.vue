@@ -2,7 +2,7 @@
   <b-navbar toggleable="md" type="dark" variant="info">
     <b-container>
       <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
-      <b-navbar-brand to="/..">
+      <b-navbar-brand to="/cvpr2019_summaries"> <!-- とりあえず -->
         <b-img
           thumbnail
           height="50"
