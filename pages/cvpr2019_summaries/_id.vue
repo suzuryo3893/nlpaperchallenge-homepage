@@ -61,7 +61,7 @@
           <h3 class="section-header">
             <b>その他（なぜ通ったか？等）</b>
           </h3>
-          <div class="section-content">{{ summary.comments }}</div>
+          <div class="section-content">{{ summary.comment }}</div>
         </div>
         <div class="article-footer">
           <ul class="article-tag-list">
