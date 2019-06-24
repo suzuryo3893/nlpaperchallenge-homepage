@@ -18,7 +18,8 @@ module.exports = {
       },
       {
         name: 'description',
-        content: '自然言語処理の国際会議「ACL」の完全読破を目指すnlpaper.challenge公式ホームページです。 自然言語処理の発展のため、勉強会や交流会を企画していきます。'
+        content:
+          '自然言語処理の国際会議「ACL」の完全読破を目指すnlpaper.challenge公式ホームページです。 自然言語処理の発展のため、勉強会や交流会を企画していきます。'
       },
       {
         name: 'author',
@@ -39,7 +40,8 @@ module.exports = {
       },
       {
         property: 'og:description',
-        content: '自然言語処理の国際会議「ACL」の完全読破を目指すnlpaper.challenge公式ホームページです。 自然言語処理の発展のため、勉強会や交流会を企画していきます。'
+        content:
+          '自然言語処理の国際会議「ACL」の完全読破を目指すnlpaper.challenge公式ホームページです。 自然言語処理の発展のため、勉強会や交流会を企画していきます。'
       },
       {
         property: 'og:image',
@@ -50,9 +52,7 @@ module.exports = {
         content: 'http://xpaperchallenge.org/nlp'
       }
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/nlp/favicon.ico' }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/nlp/favicon.ico' }]
   },
 
   /*
@@ -63,28 +63,25 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: [
-    'timeline-vuejs/dist/timeline-vuejs.css'
-  ],
+  css: [],
 
   script: [
     {
-      src: "@/assets/js/slider_cvpaperchallenge.js",
-      type: "text/javascript"
+      src: '@/assets/js/slider_cvpaperchallenge.js',
+      type: 'text/javascript'
     }
   ],
 
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [
-
-  ],
+  plugins: [],
 
   /*
   ** Nuxt.js modules
   */
-  modules: [,
+  modules: [
+    ,
     // Doc: https://bootstrap-vue.js.org/docs/
     'bootstrap-vue/nuxt',
     'nuxt-fontawesome',
@@ -99,9 +96,7 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
-    extend(config, ctx) {
-
-    }
+    extend(config, ctx) {}
   },
 
   router: {
@@ -127,23 +122,23 @@ module.exports = {
 
   generate: {
     routes: function() {
-      const tags = require('./static/data/summaries/tags.json').content;
-      const allSummaries = require('./static/data/summaries/all.json').content;
-      const perPage = 5;
-      const numPage = Math.ceil(allSummaries.length / perPage);
+      const tags = require('./static/data/summaries/tags.json').content
+      const allSummaries = require('./static/data/summaries/all.json').content
+      const perPage = 5
+      const numPage = Math.ceil(allSummaries.length / perPage)
 
-      let routes = [];
+      let routes = []
       for (let tag of tags) {
-        routes.push(`/summaries/tag/${tag}`);
+        routes.push(`/summaries/tag/${tag}`)
       }
-      for (let i=1; i <= allSummaries.length; i++) {
-        routes.push(`/summaries/${i}`);
+      for (let i = 1; i <= allSummaries.length; i++) {
+        routes.push(`/summaries/${i}`)
       }
-      for (let page=1; page <= numPage; page++) {
-        routes.push(`/summaries/page/${page}`);
+      for (let page = 1; page <= numPage; page++) {
+        routes.push(`/summaries/page/${page}`)
       }
 
-      return routes;
+      return routes
     }
   }
 }
