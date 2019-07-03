@@ -32,6 +32,9 @@
     <p v-else class="text-center">
       <font-awesome-icon class="mr-5" :icon="['fas', 'spinner']" pulse size="2x"/>
     </p>
+    <p class="text-center">
+      <a href="./cvpr2019_summaries/listall">全まとめ一覧</a>
+    </p>
   </div>
 </template>
 
@@ -45,16 +48,21 @@ export default {
   },
   asyncData() {
     let { content: summaries, meta: { totalCount } } = require(`~/static/data/cvpr2019_summaries/page/1/list.json`);
+    let header = require(`./header.json`);
     return {
       summaries,
       totalCount,
-      isLoading: false
+      isLoading: false,
+      header
     }
   },
   methods: {
     handleChangePage(page) {
       this.$router.push(`/cvpr2019_summaries/page/${page}`);
     }
-  }
+  },
+  head() {
+    return this.header;
+  },
 };
 </script>

@@ -51,12 +51,14 @@ export default {
   asyncData({ params }) {
     let tag = params.tag;
     let { content: summaries, meta: { totalCount } } = require(`~/static/data/cvpr2019_summaries/tag/${tag}/list.json`);
+    let header = require(`../header.json`);
     return {
       summaries,
       tag,
       page: 1,
       totalCount,
-      isLoading: false
+      isLoading: false,
+      header
     }
   },
   computed: {
@@ -65,6 +67,9 @@ export default {
       let end = (this.page - 1) * 5 + 5;
       return this.summaries.slice(start, end);
     }
-  }
+  },
+  head() {
+    return this.header;
+  },
 };
 </script>

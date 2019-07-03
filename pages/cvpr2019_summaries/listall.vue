@@ -49,10 +49,18 @@ export default {
   },
   asyncData() {
     let { content: summaries } = require(`~/static/data/cvpr2019_summaries/all.json`);
+    let header = require(`./header.json`);
     return {
       summaries,
-      isLoading: false
+      isLoading: false,
+      header
     }
+  },
+  head() {
+    var header_t=Object.assign({},this.header);
+    header_t['title']+="（一覧）"
+    header_t['og:title']+="（一覧）"
+    return header_t;
   },
 };
 </script>
