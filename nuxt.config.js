@@ -10,42 +10,51 @@ module.exports = {
   head: {
     title: 'cvpaper.challenge - コンピュータビジョン分野の今を映し、創り出す挑戦',
     meta: [
-      { charset: 'utf-8' },
+      { hid: 'charset', charset: 'utf-8' },
       {
+        hid: 'keyword',
         name: 'keywords',
         content:
           'cvpaper.challenge, cv, computer vision, paper, challenge'
       },
       {
+        hid: 'description',
         name: 'description',
         content: 'コンピュータビジョン分野の今を映し、創り出す挑戦を行うコミュニティcvpaper.challenge公式ホームページです。'
       },
       {
+        hid: 'author',
         name: 'author',
         content: 'cvpaper.challenge'
       },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'viewport', name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
+        hid: 'og:type',
         property: 'og:type',
         content: 'website'
       },
       {
+        hid: 'og:site_name',
         property: 'og:site_name',
         content: 'cvpaper.challenge'
       },
       {
+        hid: 'og:title',
         property: 'og:title',
         content: 'cvpaper.challenge - コンピュータビジョン分野の今を映し、創り出す挑戦'
       },
       {
+        hid: 'og:description',
         property: 'og:description',
         content: 'コンピュータビジョン分野の今を映し、創り出す挑戦を行うコミュニティcvpaper.challenge公式ホームページです。'
       },
       {
+        hid: 'og:image',
         property: 'og:image',
         content: 'http://xpaperchallenge.org/cv/image/logo/cc_logo_1_crop.png'
       },
       {
+        hid: 'og:url',
         property: 'og:url',
         content: 'http://xpaperchallenge.org/cv'
       }
