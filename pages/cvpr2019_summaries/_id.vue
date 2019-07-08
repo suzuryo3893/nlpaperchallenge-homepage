@@ -40,14 +40,16 @@
               <div class="section-content">{{ summary.overview }}</div>
             </b-col>
             <b-col sm="12" md="5" class="text-center">
-              <b-img
-                v-if="summary.image"
-                fluid
-                class="section-image"
-                slot="aside"
-                :src="summary.image"
-                alt="placeholder"
-              />
+              <a v-if="summary.image" :href="summary.image" target=".blank">
+                <b-img
+                  v-if="summary.image"
+                  fluid
+                  class="section-image"
+                  slot="aside"
+                  :src="summary.image"
+                  alt="placeholder"
+                />
+              </a>
             </b-col>
           </b-row>
           <h3 class="section-header">
