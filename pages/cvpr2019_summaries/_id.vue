@@ -71,6 +71,9 @@
               </nuxt-link>
             </li>
           </ul>
+          <p>
+            このページで利用されている画像は論文から引用しています．
+          </p>
         </div>
       </div>
       <b-pagination
@@ -178,7 +181,7 @@ export default {
   padding-top: 1.6em;
   margin: 0 3em 3em;
 }
-.article-footer a {
+.article-footer a,p{
   color: #999;
   text-decoration: none;
 }
@@ -197,5 +200,9 @@ ol,ul {
 }
 .article-tag-list-link::before {
   content: "#";
+}
+.article-tag-list + *{
+  padding-top: 1em;
+  clear: left;
 }
 </style>
