@@ -35,7 +35,7 @@ jobs:
             - "7b:d0:5b:aa:ac:fc:fd:b0:26:6c:f5:07:5d:c6:b3:28"
       - run:
           name: install-sshpass
-          command: 'sudo apt-get install sshpass'
+          command: 'sudo apt-get update && sudo apt-get install sshpass'
       - attach_workspace:
           at: ./dist
       - run:
