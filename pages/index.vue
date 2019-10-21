@@ -4,93 +4,93 @@
       <template slot="header">
         <b-container>
           <div class="text-center">
-            <b-img fluid :src="require('~/static/image/logo/title.svg')" width="400"/>
+            <b-img fluid :src="require('~/static/image/logo/cc_logo_1_trim.png')" width="400"/>
           </div>
         </b-container>
       </template>
 
       <template slot="lead">
         <b-container>
-          <div class="text-center">自然言語処理の国際会議「ACL」の完全読破を目指しています。</div>
-          <div class="text-center">自然言語処理の発展のため、勉強会や交流会を企画していきます。</div>
+          <div class="text-center">画像処理分野の国際会議の完全読破を目指しています。</div>
         </b-container>
       </template>
 
-      <b-container>
-        <hr class="my-4">
-
-        <div class="text-center">
-          <b-button class="main-button" to="/members" size="lg" variant="info">
-            <span>メンバー登録</span>
-            <font-awesome-icon icon="angle-right"/>
-          </b-button>
-        </div>
-      </b-container>
     </b-jumbotron>
 
     <b-container>
-      <b-row>
+      <!-- <b-row>
         <b-col>
           <b-card-group deck>
             <b-card
-              title="Schedule"
-              sub-title="nlpaper.challengeの全体流れ"
-              :img-src="require('~/static/image/card/schedule.jpg')"
-              img-alt="schedule"
-              img-top
-              class="with-shadow"
-            >
-              <nuxt-link to="/schedule" class="btn stretched-link"></nuxt-link>
-            </b-card>
-            <b-card
-              title="Members"
-              sub-title="nlpaper.challengeの参加者"
-              :img-src="require('~/static/image/card/members.jpg')"
-              img-alt="members"
-              img-top
-              class="with-shadow"
-            >
-              <nuxt-link to="/members" class="btn stretched-link"></nuxt-link>
-            </b-card>
-            <b-card
-              title="Resources"
-              sub-title="スライド、書籍など"
+              title="CVPR2019"
+              sub-title="CVPR2019"
               :img-src="require('~/static/image/card/resources.jpg')"
-              img-alt="resources"
+              img-alt="CVPR2019"
               img-top
               class="with-shadow"
             >
-              <nuxt-link to="/resources" class="btn stretched-link"></nuxt-link>
+              <nuxt-link to="/cvpr2019_summaries" class="btn stretched-link"></nuxt-link>
             </b-card>
           </b-card-group>
         </b-col>
-      </b-row>
+      </b-row> -->
 
-      <b-row class="mt-5">
+      <!-- <b-row class="mt-5">
         <b-col cols="12">
           <news-feed :events="events" :isLoading="isLoading"/>
         </b-col>
+      </b-row> -->
+
+      <b-row class="mt-5">
+        <b-col cols="12">
+          <proceedings-card :procs="procs" :isLoading="isLoading"/>
+        </b-col>
       </b-row>
+
     </b-container>
   </div>
 </template>
 
 <script>
-import NewsFeed from "~/components/NewsFeed.vue";
+// import NewsFeed from "~/components/NewsFeed.vue";
+// import axios from "axios";
+
+// export default {
+//   components: {
+//     NewsFeed
+//   },
+//   asyncData() {
+//     let events = require('~/static/data/events.json').content;
+//     return {
+//       events,
+//       isLoading: false
+//     }
+//   }
+// };
+
+import ProceedingsCard from "~/components/ProceedingsCard.vue";
 import axios from "axios";
 
 export default {
   components: {
-    NewsFeed
+    ProceedingsCard
   },
   asyncData() {
-    let events = require('~/static/data/events.json').content;
+    //let events = require('~/static/data/events.json').content;
+    let procs = [
+      {
+        'title' : 'CVPR2019',
+        'url' : 'cvpr2019_summaries/',
+        'date' : new Date('June 16, 2019'),
+      }
+    ];
     return {
-      events,
+      procs,
       isLoading: false
     }
   }
 };
+
 </script>
 
 <style>
