@@ -82,7 +82,12 @@ export default {
         'title' : 'CVPR2019',
         'url' : 'cvpr2019_summaries/',
         'date' : new Date('June 16, 2019'),
-      }
+      },
+      {
+        'title' : 'ICCV2019',
+        'url' : 'iccv2019_summaries/',
+        'date' : new Date('November 1, 2019'),
+      },
     ];
     return {
       procs,
