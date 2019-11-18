@@ -96,7 +96,8 @@ module.exports = {
         'nuxt-fontawesome',
         '@nuxtjs/axios',
         //'~/modules/fetchData',
-        '~/modules/fetchData_cvpr2019'
+        '~/modules/fetchData_cvpr2019',
+        '~/modules/fetchData_iccv2019',
     ],
 
     /*
@@ -165,6 +166,22 @@ module.exports = {
             }
             for (let page = 1; page <= cvpr2019_numPage; page++) {
                 routes.push(`/cvpr2019_summaries/page/${page}`);
+            }
+
+            //
+            const iccv2019_tags = require('./static/data/iccv2019_summaries/tags.json').content;
+            const iccv2019_allSummaries = require('./static/data/iccv2019_summaries/all.json').content;
+            const iccv2019_perPage = 5;
+            const iccv2019_numPage = Math.ceil(iccv2019_allSummaries.length / iccv2019_perPage);
+
+            for (let tag of iccv2019_tags) {
+                routes.push(`/iccv2019_summaries/tag/${tag}`);
+            }
+            for (let i = 1; i <= iccv2019_allSummaries.length; i++) {
+                routes.push(`/iccv2019_summaries/${i}`);
+            }
+            for (let page = 1; page <= iccv2019_numPage; page++) {
+                routes.push(`/iccv2019_summaries/page/${page}`);
             }
 
             return routes;

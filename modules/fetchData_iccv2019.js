@@ -6,7 +6,7 @@ const urls = [
     //`${GOOGLE_APP_SCRIPT_URL}?entity=events`,
     //`${GOOGLE_APP_SCRIPT_URL}?entity=members`,
     //`${GOOGLE_APP_SCRIPT_URL}?entity=resources`,
-    `${GOOGLE_APP_SCRIPT_URL_occv2019}?entity=summaries`
+    `${GOOGLE_APP_SCRIPT_URL_iccv2019}?entity=summaries`
 ]
 
 module.exports = function fetchData_iccv2019() {
