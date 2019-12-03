@@ -53,7 +53,7 @@ module.exports = function fetchData() {
         const allSummaries = await axios.get(`${GOOGLE_APP_SCRIPT_URL_cvpr2019}?entity=summaries`);
 
         // download all image and save to static data
-        fs.emptyDir(`static/image/cvpr2019_summaries/summaries`);
+        fs.emptyDirSync(`static/image/cvpr2019_summaries/summaries`);
         for (let summary of allSummaries.data) {
             if (summary['images']) {
                 summary['image'] = 'https://drive.google.com/uc?export=view&id=' + summary['images'][0];
@@ -62,7 +62,7 @@ module.exports = function fetchData() {
         }
 
         // Create list data of all summary data
-        fs.emptyDir('static/data/cvpr2019_summaries');
+        fs.emptyDirSync('static/data/cvpr2019_summaries');
         fetcher.push(writeData('static/data/cvpr2019_summaries/all.json', { content: allSummaries.data }));
 
         // Create summary per page data
@@ -80,7 +80,7 @@ module.exports = function fetchData() {
         }
 
         // Create summary per tag
-        fs.emptyDir('static/data/cvpr2019_summaries/tag/');
+        fs.emptyDirSync('static/data/cvpr2019_summaries/tag/');
         const tagset = new Set(allSummaries.data.reduce((a, b) => [...a, ...b.tags.filter(tag => tag)], []).map(tag => normalizeTag(tag)));
 
         fetcher.push(writeData('static/data/cvpr2019_summaries/tags.json', { content: Array.from(tagset) }));
@@ -94,7 +94,7 @@ module.exports = function fetchData() {
         }
 
         // Save Summary per Id
-        fs.emptyDir(`static/data/cvpr2019_summaries/id`);
+        fs.emptyDirSync(`static/data/cvpr2019_summaries/id`);
         for (let summary of allSummaries.data) {
             let summaryPath = `static/data/cvpr2019_summaries/id/${summary.id}.json`;
 
@@ -112,7 +112,7 @@ module.exports = function fetchData() {
         const allSummaries = await axios.get(`${GOOGLE_APP_SCRIPT_URL_iccv2019}?entity=summaries`);
 
         // download all image and save to static data
-        fs.emptyDir(`static/image/iccv2019_summaries`)
+        fs.emptyDirSync(`static/image/iccv2019_summaries`)
         for (let summary of allSummaries.data) {
             if (summary['images']) {
                 summary['image'] = 'https://drive.google.com/uc?export=view&id=' + summary['images'][0];
@@ -121,11 +121,11 @@ module.exports = function fetchData() {
         }
 
         // Create list data of all summary data
-        fs.emptyDir('static/data/iccv2019_summaries');
+        fs.emptyDirSync('static/data/iccv2019_summaries');
         fetcher.push(writeData('static/data/iccv2019_summaries/all.json', { content: allSummaries.data }));
 
         // Create summary per page data
-        fs.emptyDir('static/data/iccv2019_summaries/page/');
+        fs.emptyDirSync('static/data/iccv2019_summaries/page/');
         const countPerPage = 5
         const numPages = Math.ceil(allSummaries.data.length / countPerPage);
         for (let i = 0; i < numPages; i++) {
@@ -139,7 +139,7 @@ module.exports = function fetchData() {
         }
 
         // Create summary per tag
-        fs.emptyDir('static/data/iccv2019_summaries/tag/');
+        fs.emptyDirSync('static/data/iccv2019_summaries/tag/');
         const tagset = new Set(allSummaries.data.reduce((a, b) => [...a, ...b.tags.filter(tag => tag)], []).map(tag => normalizeTag(tag)));
 
         fetcher.push(writeData('static/data/iccv2019_summaries/tags.json', { content: Array.from(tagset) }));
@@ -153,7 +153,7 @@ module.exports = function fetchData() {
         }
 
         // Save Summary per Id
-        fs.emptyDir(`static/data/iccv2019_summaries/id`);
+        fs.emptyDirSync(`static/data/iccv2019_summaries/id`);
         for (let summary of allSummaries.data) {
             let summaryPath = `static/data/iccv2019_summaries/id/${summary.id}.json`;
 
@@ -163,7 +163,7 @@ module.exports = function fetchData() {
 
     const getData = async builder => {
         const fetcher = [];
-        fs.emptyDir('static/data');
+        fs.emptyDirSync('static/data');
 
         Array.prototype.push.apply(fetcher, await getData_cvpr2019());
         Array.prototype.push.apply(fetcher, await getData_iccv2019());
