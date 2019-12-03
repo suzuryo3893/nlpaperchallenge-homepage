@@ -95,9 +95,9 @@ module.exports = {
         'bootstrap-vue/nuxt',
         'nuxt-fontawesome',
         '@nuxtjs/axios',
-        //'~/modules/fetchData',
-        '~/modules/fetchData_cvpr2019',
-        '~/modules/fetchData_iccv2019',
+        '~/modules/fetchData',
+        //'~/modules/fetchData_cvpr2019',
+        //'~/modules/fetchData_iccv2019',
     ],
 
     /*

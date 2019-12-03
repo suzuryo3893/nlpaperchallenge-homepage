@@ -10,7 +10,7 @@
         {
             "hid": "description",
             "name": "description",
-            "content": "CVRR2019の全論文を読んで各要素200文字でまとめる挑戦の成果物です。"
+            "content": "ICCV2019の全論文を読んで各要素200文字でまとめる挑戦の成果物です。"
         },
         {
             "hid": "author",
@@ -36,7 +36,7 @@
         {
             "hid": "og:description",
             "property": "og:description",
-            "content": "CVRR2019の全論文を読んで各要素200文字でまとめる挑戦の成果物です。"
+            "content": "ICCV2019の全論文を読んで各要素200文字でまとめる挑戦の成果物です。"
         },
         {
             "hid": "og:image",

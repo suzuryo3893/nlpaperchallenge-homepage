@@ -1,14 +1,16 @@
 const fs = require('fs-extra')
 const axios = require('axios')
 
-const GOOGLE_APP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxmGjl76YSWUtMBrapRFat2KI_qdG3r31Zq6h_H4rNbSPUEA-zh/exec'
+//const GOOGLE_APP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxmGjl76YSWUtMBrapRFat2KI_qdG3r31Zq6h_H4rNbSPUEA-zh/exec'
+const GOOGLE_APP_SCRIPT_URL_cvpr2019 = 'https://script.google.com/macros/s/AKfycbyOjjQvU2CGvtpb-Pa2JVIumAKZYYOmYo9YYS97Rl7Gvak6A1E/exec'
+const GOOGLE_APP_SCRIPT_URL_iccv2019 = 'https://script.google.com/macros/s/AKfycbzg3-j4BkJwJ3JU3-OV6JhrjAVAy_pBbOjDQnUKA9VopPZNsKI/exec'
 
-const urls = [
-  `${GOOGLE_APP_SCRIPT_URL}?entity=events`,
-  `${GOOGLE_APP_SCRIPT_URL}?entity=members`,
-  `${GOOGLE_APP_SCRIPT_URL}?entity=resources`,
-  `${GOOGLE_APP_SCRIPT_URL}?entity=summaries`
-]
+//const urls = [
+//`${GOOGLE_APP_SCRIPT_URL}?entity=events`,
+//`${GOOGLE_APP_SCRIPT_URL}?entity=members`,
+//`${GOOGLE_APP_SCRIPT_URL}?entity=resources`,
+//`${GOOGLE_APP_SCRIPT_URL}?entity=summaries`
+//]
 
 
 module.exports = function fetchData() {
@@ -24,98 +26,159 @@ module.exports = function fetchData() {
                 reject(`${path} Write Failed. ${e}`)
             }
         })
-    }
+    };
 
     const writeImage = (path, base64encodedData) => {
-      return new Promise((resolve, reject) => {
-        try {
-          fs.ensureFileSync(path)
-          fs.writeFile(path, Buffer.from(base64encodedData, 'base64'), resolve(`${path} Write Successful`));
-        } catch(e) {
-          console.error(`${path} Write failed. ${e}`)
+        return new Promise((resolve, reject) => {
+            try {
+                fs.ensureFileSync(path)
+                fs.writeFile(path, Buffer.from(base64encodedData, 'base64'), resolve(`${path} Write Successful`));
+            } catch (e) {
+                console.error(`${path} Write failed. ${e}`)
                 reject(`${path} Write Failed. ${e}`)
-        }
-      })
+            }
+        })
+    };
+
+    const normalizeTag = (tag) => {
+        return tag.toLowerCase().replace(/\s+/g, '-').replace('#', '');
     }
 
-    const getData = async builder => {
-        fs.emptyDir('static/data')
-        console.log(`STARTING JSON BUILD FOR ${urls[0]},${urls[1]},${urls[2]}...`)
-        const fetcher = []
+
+    const getData_cvpr2019 = async() => {
+        let fetcher = [];
+        console.log(`STARTING JSON BUILD FOR ${GOOGLE_APP_SCRIPT_URL_cvpr2019}...`);
 
         // Fetch list of events, members, and resources from API
-        const allEvents = await axios.get(urls[0])
-        const allMembers = await axios.get(urls[1])
-        const allResources = await axios.get(urls[2])
-        const allSummaries = await axios.get(urls[3])
-
-        fetcher.push(writeData('static/data/events.json', { content: allEvents.data }))
-        fetcher.push(writeData('static/data/members.json', { content: allMembers.data }))
-        fetcher.push(writeData('static/data/resources.json', { content: allResources.data }))
+        const allSummaries = await axios.get(`${GOOGLE_APP_SCRIPT_URL_cvpr2019}?entity=summaries`);
 
         // download all image and save to static data
-        fs.emptyDir(`static/image/summaries`)
+        fs.emptyDir(`static/image/cvpr2019_summaries/summaries`);
         for (let summary of allSummaries.data) {
-          if(summary['image']) {
-            const [ meta, base64encodedData ] = summary['image'].split(',')
-            const extension = meta.split(';')[0].substring(11)
-            const path = `static/image/summaries/${summary.id}.${extension}`
-            fetcher.push(writeImage(path, base64encodedData))
-            summary["image"] = `/nlp/image/summaries/${summary.id}.${extension}`
-          }
+            if (summary['images']) {
+                summary['image'] = 'https://drive.google.com/uc?export=view&id=' + summary['images'][0];
+                delete summary.images; //とりあえず
+            }
         }
 
         // Create list data of all summary data
-        fs.emptyDir('static/data/summaries');
-        fetcher.push(writeData('static/data/summaries/all.json', { content: allSummaries.data }));
+        fs.emptyDir('static/data/cvpr2019_summaries');
+        fetcher.push(writeData('static/data/cvpr2019_summaries/all.json', { content: allSummaries.data }));
 
         // Create summary per page data
-        fs.emptyDir('static/data/summaries/page/');
+        fs.emptyDir('static/data/cvpr2019_summaries/page/');
         const countPerPage = 5
         const numPages = Math.ceil(allSummaries.data.length / countPerPage);
-        for(let i=0; i < numPages; i++) {
-          let page = i + 1;
-          let start = i * countPerPage;
-          let end = i * countPerPage + 5;
-          let summariesPerPage = allSummaries.data.slice(start, end);
-          let pageDataPath = `static/data/summaries/page/${page}/list.json`;
+        for (let i = 0; i < numPages; i++) {
+            let page = i + 1;
+            let start = i * countPerPage;
+            let end = i * countPerPage + 5;
+            let summariesPerPage = allSummaries.data.slice(start, end);
+            let pageDataPath = `static/data/cvpr2019_summaries/page/${page}/list.json`;
 
-          fetcher.push(writeData(pageDataPath, { content: summariesPerPage, meta: { totalCount: allSummaries.data.length } }));
+            fetcher.push(writeData(pageDataPath, { content: summariesPerPage, meta: { totalCount: allSummaries.data.length } }));
         }
 
         // Create summary per tag
-        fs.emptyDir('static/data/summaries/tag/');
-        const tagset = new Set(allSummaries.data.reduce((a, b) => [...a, ...b.tags], []));
+        fs.emptyDir('static/data/cvpr2019_summaries/tag/');
+        const tagset = new Set(allSummaries.data.reduce((a, b) => [...a, ...b.tags.filter(tag => tag)], []).map(tag => normalizeTag(tag)));
 
-        fetcher.push(writeData('static/data/summaries/tags.json', { content: Array.from(tagset) }));
+        fetcher.push(writeData('static/data/cvpr2019_summaries/tags.json', { content: Array.from(tagset) }));
 
         console.log(tagset)
         for (let tag of tagset) {
-          let summariesByTag = allSummaries.data.filter(summary => summary.tags.includes(tag));
-          let tagDataPath = `static/data/summaries/tag/${tag}/list.json`;
+            let summariesByTag = allSummaries.data.filter(summary => summary.tags.filter(tag => tag).map(tag => normalizeTag(tag)).includes(tag));
+            let tagDataPath = `static/data/cvpr2019_summaries/tag/${tag}/list.json`;
 
-          fetcher.push(writeData(tagDataPath, { content: summariesByTag, meta: { totalCount: summariesByTag.length } }));
+            fetcher.push(writeData(tagDataPath, { content: summariesByTag, meta: { totalCount: summariesByTag.length } }));
         }
 
         // Save Summary per Id
-        fs.emptyDir(`static/data/summaries/id`);
-        for(let summary of allSummaries.data) {
-          let summaryPath = `static/data/summaries/id/${summary.id}.json`;
+        fs.emptyDir(`static/data/cvpr2019_summaries/id`);
+        for (let summary of allSummaries.data) {
+            let summaryPath = `static/data/cvpr2019_summaries/id/${summary.id}.json`;
 
-          fetcher.push(writeData(summaryPath, { content: summary, meta: { totalCount: allSummaries.data.length } }));
+            fetcher.push(writeData(summaryPath, { content: summary, meta: { totalCount: allSummaries.data.length } }));
         }
 
-        console.log(`PROCESSING events, members, resources, and summaries...`)
+        return fetcher;
+    };
+
+    const getData_iccv2019 = async() => {
+        let fetcher = [];
+        console.log(`STARTING JSON BUILD FOR ${GOOGLE_APP_SCRIPT_URL_iccv2019}...`)
+
+        // Fetch list of events, members, and resources from API
+        const allSummaries = await axios.get(`${GOOGLE_APP_SCRIPT_URL_iccv2019}?entity=summaries`);
+
+        // download all image and save to static data
+        fs.emptyDir(`static/image/iccv2019_summaries`)
+        for (let summary of allSummaries.data) {
+            if (summary['images']) {
+                summary['image'] = 'https://drive.google.com/uc?export=view&id=' + summary['images'][0];
+                delete summary.images; //とりあえず
+            }
+        }
+
+        // Create list data of all summary data
+        fs.emptyDir('static/data/iccv2019_summaries');
+        fetcher.push(writeData('static/data/iccv2019_summaries/all.json', { content: allSummaries.data }));
+
+        // Create summary per page data
+        fs.emptyDir('static/data/iccv2019_summaries/page/');
+        const countPerPage = 5
+        const numPages = Math.ceil(allSummaries.data.length / countPerPage);
+        for (let i = 0; i < numPages; i++) {
+            let page = i + 1;
+            let start = i * countPerPage;
+            let end = i * countPerPage + 5;
+            let summariesPerPage = allSummaries.data.slice(start, end);
+            let pageDataPath = `static/data/iccv2019_summaries/page/${page}/list.json`;
+
+            fetcher.push(writeData(pageDataPath, { content: summariesPerPage, meta: { totalCount: allSummaries.data.length } }));
+        }
+
+        // Create summary per tag
+        fs.emptyDir('static/data/iccv2019_summaries/tag/');
+        const tagset = new Set(allSummaries.data.reduce((a, b) => [...a, ...b.tags.filter(tag => tag)], []).map(tag => normalizeTag(tag)));
+
+        fetcher.push(writeData('static/data/iccv2019_summaries/tags.json', { content: Array.from(tagset) }));
+
+        console.log(tagset)
+        for (let tag of tagset) {
+            let summariesByTag = allSummaries.data.filter(summary => summary.tags.filter(tag => tag).map(tag => normalizeTag(tag)).includes(tag));
+            let tagDataPath = `static/data/iccv2019_summaries/tag/${tag}/list.json`;
+
+            fetcher.push(writeData(tagDataPath, { content: summariesByTag, meta: { totalCount: summariesByTag.length } }));
+        }
+
+        // Save Summary per Id
+        fs.emptyDir(`static/data/iccv2019_summaries/id`);
+        for (let summary of allSummaries.data) {
+            let summaryPath = `static/data/iccv2019_summaries/id/${summary.id}.json`;
+
+            fetcher.push(writeData(summaryPath, { content: summary, meta: { totalCount: allSummaries.data.length } }));
+        }
+    };
+
+    const getData = async builder => {
+        const fetcher = [];
+        fs.emptyDir('static/data');
+
+        Array.prototype.push.apply(fetcher, await getData_cvpr2019());
+        Array.prototype.push.apply(fetcher, await getData_iccv2019());
+
+        console.log(`PROCESSING events, members, resources, and summaries...`);
 
         return Promise.all(fetcher)
             .then(() => {
-                console.log('JSON Build complete!')
+                console.log('JSON Build complete!');
             })
             .catch(e => {
-                throw e
-            })
-    }
+                throw e;
+            });
+    };
 
     // Run it before the nuxt build stage
-    this.nuxt.hook('build:before', getData)
-}
+    this.nuxt.hook('build:before', getData);
+};

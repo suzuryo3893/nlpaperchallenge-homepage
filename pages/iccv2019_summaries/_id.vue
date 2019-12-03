@@ -67,10 +67,11 @@
         </div>
         <div class="article-footer">
           <ul class="article-tag-list">
-            <li v-for="(tag, idx) in summary.tags" :key="idx" class="article-tag-list-item">
-              <nuxt-link :to="`/iccv2019_summaries/tag/${tag.toLowerCase()}`" class="article-tag-list-link">
-                {{ tag }}
-              </nuxt-link>
+            <li v-for="(tag, idx) in nonEmptyTags" :key="idx" class="article-tag-list-item">
+              <nuxt-link
+                :to="`/iccv2019_summaries/tag/${normalizeTag(tag)}`"
+                class="article-tag-list-link"
+              >{{ tag }}</nuxt-link>
             </li>
           </ul>
           <p>
@@ -111,9 +112,17 @@ export default {
       header
     }
   },
+  computed: {
+    nonEmptyTags() {
+      return this.summary.tags.filter(tag => tag);
+    }
+  },
   methods: {
     handleChange(page) {
       this.$router.push(`/iccv2019_summaries/${page}`)
+    },
+    normalizeTag(tag) {
+      return tag.toLowerCase().replace(/\s+/g, '-').replace('#', '');
     }
   },
   head() {

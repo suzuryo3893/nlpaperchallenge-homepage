@@ -3,7 +3,7 @@
     <b-media>
       <h5 class="mt-0"><nuxt-link :to="`/iccv2019_summaries/${summary.id}`">{{ summary.title }}</nuxt-link></h5>
       <div>by: {{ summary.resumer }}</div>
-      <nuxt-link :to="`/iccv2019_summaries/tag/${tag.toLowerCase()}`" class="tag tag-primary" v-for="(tag, idx) in summary.tags" :key="idx">
+      <nuxt-link :to="`/iccv2019_summaries/tag/${normalizeTag(tag)}`" class="tag tag-primary mr-2" v-for="(tag, idx) in nonEmptyTags" :key="idx">
         {{ tag }}
       </nuxt-link>
     </b-media>
@@ -14,6 +14,17 @@
 export default {
   props: {
     summary: Object
+  },
+  computed: {
+    nonEmptyTags() {
+      // Filter undefined tag
+      return this.summary.tags.filter(tag => tag)
+    }
+  },
+  methods: {
+    normalizeTag(tag) {
+      return tag.toLowerCase().replace(/\s+/g, '-').replace('#', '')
+    }
   }
 };
 </script>
