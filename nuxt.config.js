@@ -184,6 +184,22 @@ module.exports = {
                 routes.push(`/iccv2019_summaries/page/${page}`);
             }
 
+            //
+            const cvpr2020_tags = require('./static/data/cvpr2020_summaries/tags.json').content;
+            const cvpr2020_allSummaries = require('./static/data/cvpr2020_summaries/all.json').content;
+            const cvpr2020_perPage = 5;
+            const cvpr2020_numPage = Math.ceil(cvpr2020_allSummaries.length / cvpr2020_perPage);
+
+            for (let tag of cvpr2020_tags) {
+                routes.push(`/cvpr2020_summaries/tag/${tag}`);
+            }
+            for (let i = 1; i <= cvpr2020_allSummaries.length; i++) {
+                routes.push(`/cvpr2020_summaries/${i}`);
+            }
+            for (let page = 1; page <= cvpr2020_numPage; page++) {
+                routes.push(`/cvpr2020_summaries/page/${page}`);
+            }
+
             return routes;
         }
     }
