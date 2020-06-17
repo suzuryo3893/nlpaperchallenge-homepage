@@ -68,7 +68,7 @@
         <div class="article-footer">
           <ul class="article-tag-list">
             <li v-for="(tag, idx) in summary.tags" :key="idx" class="article-tag-list-item">
-              <nuxt-link :to="`/cvpr2020_summaries/tag/${tag.toLowerCase()}`" class="article-tag-list-link">
+              <nuxt-link :to="`/cvpr2020_summaries/tag/${normalizeTag(tag)}`" class="article-tag-list-link">
                 {{ tag }}
               </nuxt-link>
             </li>
@@ -114,6 +114,9 @@ export default {
   methods: {
     handleChange(page) {
       this.$router.push(`/cvpr2020_summaries/${page}`)
+    },
+    normalizeTag(tag) {
+      return tag.toLowerCase().replace(/\s+/g, '-').replace('#', '')
     }
   },
   head() {
