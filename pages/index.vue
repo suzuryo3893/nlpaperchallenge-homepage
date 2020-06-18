@@ -75,7 +75,7 @@ export default {
   components: {
     ProceedingsCard
   },
-  async asyncData() {
+  asyncData() {
     //let events = require('~/static/data/events.json').content;
     let procs = [
       {

@@ -46,7 +46,7 @@ export default {
   components: {
     SummaryCard
   },
-  async asyncData() {
+  asyncData() {
     let { content: summaries, meta: { totalCount } } = require(`~/static/data/iccv2019_summaries/page/1/list.json`);
     let header = require(`./header.json`);
     return {
