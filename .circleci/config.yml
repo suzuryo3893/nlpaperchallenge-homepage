@@ -21,6 +21,7 @@ jobs:
       - run:
           name: generate-app
           command: npm run generate
+          no_output_timeout: 60m
       - persist_to_workspace:
           root: ./dist
           paths:
