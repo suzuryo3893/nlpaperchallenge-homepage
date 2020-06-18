@@ -47,7 +47,7 @@ export default {
   components: {
     SummaryCard
   },
-  asyncData() {
+  async asyncData() {
     let { content: summaries } = require(`~/static/data/iccv2019_summaries/all.json`);
     let header = require(`./header.json`);
     return {
@@ -57,7 +57,7 @@ export default {
     }
   },
   head() {
-    var header_t=Object.assign({},this.header);
+    let header_t = JSON.parse(JSON.stringify(this.header));
     header_t['title']+="（一覧）"
     header_t['og:title']+="（一覧）"
     return header_t;

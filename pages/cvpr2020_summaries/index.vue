@@ -46,7 +46,7 @@ export default {
   components: {
     SummaryCard
   },
-  asyncData() {
+  async asyncData() {
     let { content: summaries, meta: { totalCount } } = require(`~/static/data/cvpr2020_summaries/page/1/list.json`);
     let header = require(`./header.json`);
     return {

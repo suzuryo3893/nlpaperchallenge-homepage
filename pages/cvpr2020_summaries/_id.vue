@@ -31,7 +31,7 @@
           </div>
           <div class="article-authors">
             {{ summary.authors.join(', ') }}
-          </div>
+        </div>
         </div>
         <div class="article-entry">
           <b-row>
@@ -100,7 +100,7 @@ export default {
   components: {
     ResourceCard
   },
-  asyncData({ params }) {
+  async asyncData({ params }) {
     let id = params.id;
     let { content: summary, meta: { totalCount } } = require(`~/static/data/cvpr2020_summaries/id/${id}.json`);
     let header = require(`./header.json`);
@@ -116,11 +116,11 @@ export default {
       this.$router.push(`/cvpr2020_summaries/${page}`)
     },
     normalizeTag(tag) {
-      return tag.toLowerCase().replace(/\s+/g, '-').replace('#', '')
+      return tag.toLowerCase().replace(/(\s+|\/)/g, '-').replace('#', '')
     }
   },
   head() {
-    var header_t=Object.assign({},this.header);
+    let header_t = JSON.parse(JSON.stringify(this.header));
     header_t['title']=this.summary.title;
     header_t['meta'].find(e=>e.hid=='description').content=this.summary.overview;
     header_t['meta'].find(e=>e.hid=='og:title').content=this.summary.title;

@@ -48,7 +48,7 @@ export default {
   components: {
     SummaryCard
   },
-  asyncData({ params }) {
+  async asyncData({ params }) {
     let tag = params.tag;
     let { content: summaries, meta: { totalCount } } = require(`~/static/data/cvpr2019_summaries/tag/${tag}/list.json`);
     let header = require(`../header.json`);

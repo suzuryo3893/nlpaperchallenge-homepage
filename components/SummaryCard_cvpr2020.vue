@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     normalizeTag(tag) {
-      return tag.toLowerCase().replace(/\s+/g, '-').replace('#', '')
+      return tag.toLowerCase().replace(/(\s+|\/)/g, '-').replace('#', '');
     }
   }
 };
