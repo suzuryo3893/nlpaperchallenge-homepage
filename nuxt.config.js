@@ -200,6 +200,22 @@ module.exports = {
                 routes.push(`/cvpr2020_summaries/page/${page}`);
             }
 
+            //
+            const eccv2020_tags = require('./static/data/eccv2020_summaries/tags.json').content;
+            const eccv2020_allSummaries = require('./static/data/eccv2020_summaries/all.json').content;
+            const eccv2020_perPage = 5;
+            const eccv2020_numPage = Math.ceil(eccv2020_allSummaries.length / eccv2020_perPage);
+
+            for (let tag of eccv2020_tags) {
+                routes.push(`/eccv2020_summaries/tag/${tag}`);
+            }
+            for (let i = 1; i <= eccv2020_allSummaries.length; i++) {
+                routes.push(`/eccv2020_summaries/${i}`);
+            }
+            for (let page = 1; page <= eccv2020_numPage; page++) {
+                routes.push(`/eccv2020_summaries/page/${page}`);
+            }
+
             return routes;
         }
     }
