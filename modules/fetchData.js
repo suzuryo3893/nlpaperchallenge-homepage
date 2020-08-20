@@ -5,7 +5,7 @@ const axios = require('axios')
 const GOOGLE_APP_SCRIPT_URL_cvpr2019 = 'https://script.google.com/macros/s/AKfycbyOjjQvU2CGvtpb-Pa2JVIumAKZYYOmYo9YYS97Rl7Gvak6A1E/exec'
 const GOOGLE_APP_SCRIPT_URL_iccv2019 = 'https://script.google.com/macros/s/AKfycbzg3-j4BkJwJ3JU3-OV6JhrjAVAy_pBbOjDQnUKA9VopPZNsKI/exec'
 const GOOGLE_APP_SCRIPT_URL_cvpr2020 = 'https://script.google.com/macros/s/AKfycbxySN2m0xbJepdwBZOun7oFp8Jtz-PiB9qNs-jecHcQcU8AmmY/exec'
-const GOOGLE_APP_SCRIPT_URL_eccv2020 = 'https://script.google.com/macros/s/AKfycbzheDR7cthXvDBfHIISILt9F_xgSacNEcvdCNfm/exec'
+const GOOGLE_APP_SCRIPT_URL_eccv2020 = 'https://script.google.com/macros/s/AKfycbwIW4YlbrhIoWOCNsWLmhrCLcO1blsmyfq9VqLi-utVffRjip0/exec'
 
 
 //const urls = [
