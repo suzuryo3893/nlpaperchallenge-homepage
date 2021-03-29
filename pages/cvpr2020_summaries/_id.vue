@@ -116,7 +116,7 @@ export default {
       this.$router.push(`/cvpr2020_summaries/${page}`)
     },
     normalizeTag(tag) {
-      return tag.toLowerCase().replace(/(\s+|\/)/g, '-').replace('#', '')
+      return tag.toLowerCase().replace(/(\s+|\/|:)/g, '-').replace('#', '');
     }
   },
   head() {
