@@ -96,6 +96,7 @@ module.exports = {
         'nuxt-fontawesome',
         '@nuxtjs/axios',
         '~/modules/fetchData',
+        '@nuxtjs/google-analytics',
         //'~/modules/fetchData_cvpr2019',
         //'~/modules/fetchData_iccv2019',
     ],
@@ -218,5 +219,8 @@ module.exports = {
 
             return routes;
         }
+    },
+    googleAnalytics: {
+        id: 'UA-171419610-1'
     }
 }
