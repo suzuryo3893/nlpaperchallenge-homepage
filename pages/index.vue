@@ -98,6 +98,11 @@ export default {
         'url' : 'eccv2020_summaries/',
         'date' : new Date('August 23, 2020'),
       },
+      {
+        'title' : 'CVPR2021',
+        'url' : 'cvpr2021_summaries/',
+        'date' : new Date('June 19, 2021'),
+      },
     ];
     return {
       procs,

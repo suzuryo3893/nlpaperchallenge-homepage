@@ -217,6 +217,22 @@ module.exports = {
                 routes.push(`/eccv2020_summaries/page/${page}`);
             }
 
+            //
+            const cvpr2021_tags = require('./static/data/cvpr2021_summaries/tags.json').content;
+            const cvpr2021_allSummaries = require('./static/data/cvpr2021_summaries/all.json').content;
+            const cvpr2021_perPage = 5;
+            const cvpr2021_numPage = Math.ceil(cvpr2021_allSummaries.length / cvpr2021_perPage);
+
+            for (let tag of cvpr2021_tags) {
+                routes.push(`/cvpr2021_summaries/tag/${tag}`);
+            }
+            for (let i = 1; i <= cvpr2021_allSummaries.length; i++) {
+                routes.push(`/cvpr2021_summaries/${i}`);
+            }
+            for (let page = 1; page <= cvpr2021_numPage; page++) {
+                routes.push(`/cvpr2021_summaries/page/${page}`);
+            }
+
             return routes;
         }
     },

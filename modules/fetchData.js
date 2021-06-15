@@ -6,6 +6,7 @@ const GOOGLE_APP_SCRIPT_URL_cvpr2019 = 'https://script.google.com/macros/s/AKfyc
 const GOOGLE_APP_SCRIPT_URL_iccv2019 = 'https://script.google.com/macros/s/AKfycbzg3-j4BkJwJ3JU3-OV6JhrjAVAy_pBbOjDQnUKA9VopPZNsKI/exec'
 const GOOGLE_APP_SCRIPT_URL_cvpr2020 = 'https://script.google.com/macros/s/AKfycbxySN2m0xbJepdwBZOun7oFp8Jtz-PiB9qNs-jecHcQcU8AmmY/exec'
 const GOOGLE_APP_SCRIPT_URL_eccv2020 = 'https://script.google.com/macros/s/AKfycbwIW4YlbrhIoWOCNsWLmhrCLcO1blsmyfq9VqLi-utVffRjip0/exec'
+const GOOGLE_APP_SCRIPT_URL_cvpr2021 = 'https://script.google.com/macros/s/AKfycbwTz3h_8eTtCGYr3fiE6Rutgl6QBnzpGzswCBILta4Mf7gQ-NVl5XVw0j7jHry64DcOMA/exec'
 
 
 //const urls = [
@@ -282,6 +283,65 @@ module.exports = function fetchData() {
         return fetcher;
     };
 
+    const getData_cvpr2021 = async() => {
+        let fetcher = [];
+        console.log(`STARTING JSON BUILD FOR ${GOOGLE_APP_SCRIPT_URL_cvpr2021}...`);
+
+        // Fetch list of events, members, and resources from API
+        const allSummaries = await axios.get(`${GOOGLE_APP_SCRIPT_URL_cvpr2021}?entity=summaries`);
+
+        // download all image and save to static data
+        fs.emptyDirSync(`static/image/cvpr2021_summaries/summaries`);
+        for (let summary of allSummaries.data) {
+            if (summary['images']) {
+                summary['image'] = 'https://drive.google.com/uc?export=view&id=' + summary['images'][0];
+                delete summary.images; //とりあえず
+            }
+        }
+
+        // Create list data of all summary data
+        fs.emptyDirSync('static/data/cvpr2021_summaries');
+        fetcher.push(writeData('static/data/cvpr2021_summaries/all.json', { content: allSummaries.data }));
+
+        // Create summary per page data
+        fs.emptyDir('static/data/cvpr2021_summaries/page/');
+        const countPerPage = 5
+        const numPages = Math.ceil(allSummaries.data.length / countPerPage);
+        for (let i = 0; i < numPages; i++) {
+            let page = i + 1;
+            let start = i * countPerPage;
+            let end = i * countPerPage + 5;
+            let summariesPerPage = allSummaries.data.slice(start, end);
+            let pageDataPath = `static/data/cvpr2021_summaries/page/${page}/list.json`;
+
+            fetcher.push(writeData(pageDataPath, { content: summariesPerPage, meta: { totalCount: allSummaries.data.length } }));
+        }
+
+        // Create summary per tag
+        fs.emptyDirSync('static/data/cvpr2021_summaries/tag/');
+        const tagset = new Set(allSummaries.data.reduce((a, b) => [...a, ...b.tags.filter(tag => tag)], []).map(tag => normalizeTag(tag)));
+
+        fetcher.push(writeData('static/data/cvpr2021_summaries/tags.json', { content: Array.from(tagset) }));
+
+        console.log(tagset)
+        for (let tag of tagset) {
+            let summariesByTag = allSummaries.data.filter(summary => summary.tags.filter(tag => tag).map(tag => normalizeTag(tag)).includes(tag));
+            let tagDataPath = `static/data/cvpr2021_summaries/tag/${tag}/list.json`;
+
+            fetcher.push(writeData(tagDataPath, { content: summariesByTag, meta: { totalCount: summariesByTag.length } }));
+        }
+
+        // Save Summary per Id
+        fs.emptyDirSync(`static/data/cvpr2021_summaries/id`);
+        for (let summary of allSummaries.data) {
+            let summaryPath = `static/data/cvpr2021_summaries/id/${summary.id}.json`;
+
+            fetcher.push(writeData(summaryPath, { content: summary, meta: { totalCount: allSummaries.data.length } }));
+        }
+
+        return fetcher;
+    };
+
     const getData = async builder => {
         const fetcher = [];
         fs.emptyDirSync('static/data');
@@ -290,6 +350,7 @@ module.exports = function fetchData() {
         Array.prototype.push.apply(fetcher, await getData_iccv2019());
         Array.prototype.push.apply(fetcher, await getData_cvpr2020());
         Array.prototype.push.apply(fetcher, await getData_eccv2020());
+        Array.prototype.push.apply(fetcher, await getData_cvpr2021());
 
         console.log(`PROCESSING events, members, resources, and summaries...`);
 
