@@ -10,14 +10,20 @@ jobs:
           name: update-npm
           command: 'sudo npm install -g npm@latest'
       - restore_cache:
-          key: dependency-cache-v2-{{ checksum "package.json" }}
+          #key: dependency-cache-v2-{{ checksum "package.json" }}
+          key: yarn-packages-{{ checksum "yarn.lock" }}
       - run:
-          name: install-npm-wee
-          command: npm install
+          #name: install-npm-wee
+          #command: npm install
+          name: install-yarn
+          command: yarn install --frozen-lockfile
       - save_cache:
-          key: dependency-cache-v2-{{ checksum "package.json" }}
+          #key: dependency-cache-v2-{{ checksum "package.json" }}
+          #paths:
+          #  - ./node_modules
+          key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
-            - ./node_modules
+            - ~/.cache/yarn
       - run:
           name: generate-app
           command: npm run generate
